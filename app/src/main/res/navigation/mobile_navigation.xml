@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_future">
+
+
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.project_ewallet.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        android:id="@+id/nav_budget"
+        android:name="com.example.project_ewallet.ui.budget.BudgetFragment"
+        android:label="@string/menu_budget"
+        tools:layout="@layout/fragment_budget" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.project_ewallet.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/nav_future"
+        android:name="com.example.project_ewallet.ui.future.FutureFragment"
+        android:label="@string/menu_future"
+        tools:layout="@layout/fragment_future" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.project_ewallet.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_setUpRecur"
+        android:name="com.example.project_ewallet.ui.setUpRecur.SetUpRecurFragment"
+        android:label="@string/menu_setUpRecur"
+        tools:layout="@layout/fragment_setuprecur" />
+    <fragment
+        android:id="@+id/nav_export"
+        android:name="com.example.project_ewallet.ui.export.ExportFragment"
+        android:label="@string/menu_export"
+        tools:layout="@layout/fragment_export" />
+
+
 </navigation>
