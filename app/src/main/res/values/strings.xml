@@ -11,5 +11,20 @@
     <string name="menu_future">Future recurring record mode</string>
     <string name="menu_setUpRecur">Set up recurring expenses</string>
     <string name="menu_export">Export CSV file</string>
+    <string name="txtCat">Category</string>
+    <string name="txtSal">Salary</string>
+    <string name="txtDate">Date</string>
+    <string name="btnBill">Bill</string>
+    <string name="btnFood">Food</string>
+    <string name="btnHealth">Health</string>
+    <string name="btnHouse">Housing</string>
+    <string name="btnTrans">Transport</string>
+    <string name="btnToilet">Toiletry</string>
+    <string name="btnClot">Clothes</string>
+    <string name="btnMiscel">Miscellaneous</string>
+    <string name="btnEnt">Entertain</string>
+    <string name="btnDep">Deposit</string>
+    <string name="btnSal">Salary</string>
+    <string name="btnSav">Savings</string>
 
 </resources>
