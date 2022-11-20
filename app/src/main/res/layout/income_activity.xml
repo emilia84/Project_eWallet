@@ -4,8 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/btnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/btnDate" />
+
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtRes"
         android:layout_width="match_parent"
         android:layout_height="62dp" />
 
