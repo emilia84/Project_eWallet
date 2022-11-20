@@ -9,15 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.project_ewallet.databinding.FragmentBudgetBinding;
+import com.example.project_ewallet.databinding.FragmentExportBinding;
 
 public class ExportFragment extends Fragment {
-    private FragmentBudgetBinding binding;
+    private FragmentExportBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = FragmentBudgetBinding.inflate(inflater, container, false);
+        binding = FragmentExportBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 

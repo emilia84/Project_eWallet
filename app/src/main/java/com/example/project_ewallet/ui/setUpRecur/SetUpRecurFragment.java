@@ -9,15 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.project_ewallet.databinding.FragmentBudgetBinding;
+import com.example.project_ewallet.databinding.FragmentSetuprecurBinding;
 
 public class SetUpRecurFragment extends Fragment {
-    private FragmentBudgetBinding binding;
+    private FragmentSetuprecurBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
 
-        binding = FragmentBudgetBinding.inflate(inflater, container, false);
+        binding = FragmentSetuprecurBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 

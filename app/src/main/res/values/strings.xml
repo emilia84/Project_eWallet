@@ -26,5 +26,7 @@
     <string name="btnDep">Deposit</string>
     <string name="btnSal">Salary</string>
     <string name="btnSav">Savings</string>
+    <string name="add_expense">Add Expense</string>
+    <string name="add_income">Add income</string>
 
 </resources>
