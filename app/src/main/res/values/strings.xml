@@ -26,5 +26,11 @@
     <string name="btnDep">Deposit</string>
     <string name="btnSal">Salary</string>
     <string name="btnSav">Savings</string>
+    <string name="txtInterval">Choose Interval</string>
+    <string name="radOne">Month Interval</string>
+    <string name="radTwo">Week Interval</string>
+    <string name="btnDel">Delete</string>
+    <string name="btnEdit">Edit</string>
+    <string name="btnDate">Select the date</string>
 
 </resources>
