@@ -11,9 +11,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Table columns
     public static final String ID = "_id";
-    public static final String DATE = "fn";
-    public static final String AMOUNT = "ln";
-    public static final String CATEGORIES = "salary";
+    public static final String DATE = "date";
+    public static final String AMOUNT = "amount";
+    public static final String CATEGORIES = "categories";
 
 
     // Database Information
