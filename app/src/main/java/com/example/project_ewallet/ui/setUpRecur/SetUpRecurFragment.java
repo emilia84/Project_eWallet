@@ -7,14 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 
-
-
+import com.example.project_ewallet.DBManager;
 import com.example.project_ewallet.R;
 import com.example.project_ewallet.databinding.FragmentBudgetBinding;
 import com.example.project_ewallet.databinding.FragmentSetuprecurBinding;
@@ -25,6 +26,7 @@ import java.util.Calendar;
 public class SetUpRecurFragment extends Fragment{
     private FragmentSetuprecurBinding binding;
     private TextView reservation;
+    private DBManager dbManager;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,6 +45,8 @@ public class SetUpRecurFragment extends Fragment{
                 reservation.setText(fmtDate.format(c.getTime()));
             }
         });
+        dbManager = new DBManager(getContext());
+        dbManager.open();
 
         return root;
     }
@@ -56,10 +60,23 @@ public class SetUpRecurFragment extends Fragment{
             c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         }
     };
+    //Code Interval!!!!
+    public void chooseInterval(View view){
+        View root = binding.getRoot();
+        final RadioButton rMonth = root.findViewById(R.id.radMonth);
+        final RadioButton rWeek = root.findViewById(R.id.radWeek);
+        if(rMonth.isChecked()){
+            //
+        }
+        else if(rWeek.isChecked()){
+            //
+        }
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        dbManager.close();
     }
 }

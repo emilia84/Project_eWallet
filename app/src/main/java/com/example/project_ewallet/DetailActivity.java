@@ -1,5 +1,6 @@
 package com.example.project_ewallet;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class DetailActivity extends AppCompatActivity {
-    static ArrayList<String[]> list =  new ArrayList<>();
+public class DetailActivity extends AppCompatActivity{
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
+        Intent intent = getIntent();
+        Bundle b = intent.getBundleExtra("bundle");
+        ArrayList<String[]> list = (ArrayList<String[]>) b.getSerializable("arraylist");
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rView);
         DetailAdapter adapter = new DetailAdapter(list);

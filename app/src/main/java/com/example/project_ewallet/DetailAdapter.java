@@ -1,5 +1,6 @@
 package com.example.project_ewallet;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder>{
+
     private ArrayList<String[]> list;
     public DetailAdapter(ArrayList<String[]> data){
         super();
@@ -27,11 +29,18 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final String[] item = list.get(position);
-        holder.txtCat.setText(item[0]);
-        holder.txtSal.setText(item[1]);
-        holder.txtDate.setText(item[2]);
-    }
+        holder.txtDate.setText(item[1]);
+        holder.txtSal.setText(item[2]);
+        holder.txtCat.setText(item[3]);
 
+        //Pass data to UpdateDelete Activity!!!!
+        holder.txtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
     @Override
     public int getItemCount() {
         return list.size();
@@ -46,6 +55,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
             this.txtCat = (TextView) itemView.findViewById(R.id.txtCat);
             this.txtSal = (TextView) itemView.findViewById(R.id.txtSal);
             this.txtDate = (TextView) itemView.findViewById(R.id.txtDate);
+
         }
     }
 }
