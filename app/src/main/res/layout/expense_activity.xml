@@ -14,17 +14,20 @@
     <TextView
         android:id="@+id/txtRes"
         android:layout_width="match_parent"
-        android:layout_height="69dp" />
+        android:layout_height="69dp"
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txtAmount"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:ems="10"
+        android:hint="Please enter your money"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,6 +41,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:onClick="addData"
             android:text="@string/btnMiscel" />
 
         <Button

@@ -1,17 +1,24 @@
 package com.example.project_ewallet.ui.future;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.Button;
 
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.project_ewallet.DBManager;
+import com.example.project_ewallet.DetailActivity;
+import com.example.project_ewallet.ExpenseActivity;
+import com.example.project_ewallet.IncomeActivity;
 import com.example.project_ewallet.R;
 import com.example.project_ewallet.databinding.FragmentFutureBinding;
 import com.github.mikephil.charting.animation.Easing;
@@ -20,6 +27,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +38,9 @@ public class FutureFragment extends Fragment {
 
         private FragmentFutureBinding binding;
         private PieChart pieChart;
+        ArrayList<String[]> expenseArr = new ArrayList<>();
+        ArrayList<String[]> incomeArr = new ArrayList<>();
+        private DBManager dbManager;
 
         public View onCreateView(@NonNull LayoutInflater inflater,
                                  ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +54,29 @@ public class FutureFragment extends Fragment {
             initPieChart();
             showPieChart();
 
+            Button btnDetails = (Button)root.findViewById(R.id.btnDetails);
+            btnDetails.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(view.getContext(), DetailActivity.class));
+                }
+            });
+            Button btnExp = (Button)root.findViewById(R.id.btnExpense);
+            btnExp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(view.getContext(), ExpenseActivity.class));
+                }
+            });
+            Button btnIn = (Button)root.findViewById(R.id.btnIncome);
+            btnIn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(view.getContext(), IncomeActivity.class));
+                }
+            });
+            dbManager = new DBManager(getContext());
+            dbManager.open();
             return root;
         }
 
@@ -99,12 +133,63 @@ public class FutureFragment extends Fragment {
         //adding animation so the entries pop up from 0 degree
         pieChart.animateY(1400, Easing.EaseInOutQuad);
 
-
     }
         public void onDestroyView(){
             super.onDestroyView();
+            dbManager.close();
             binding = null;
         }
 
+        //Cannot retrieve getData -> null pointer!!!!
+    public void getData(View v) {
+        expenseArr.clear();
 
+        Cursor c = dbManager.fetchExpense();
+        if (c != null) {
+            c.moveToFirst();
+            while(!c.isLast()) {
+                String[] expense = new String[4];
+                expense[0] = c.getString(0);
+                //expense[1] = c.getString(1); //--------> DATEPICKER?
+                expense[2] = c.getString(2);
+                expense[3] = c.getString(3);
+                Log.d("",String.format("%5d %10s %7.2f\n %10s",
+                        c.getInt(0),c.getString(1),c.getDouble(2),c.getString(3))
+                );
+
+                expenseArr.add(expense);
+                c.moveToNext();
+            }
+        }
+        Intent i = new Intent(getContext(), DetailActivity.class);
+        Bundle b = new Bundle();
+        b.putSerializable("arraylist", (Serializable) expenseArr);
+        i.putExtra("bundle", b);
+        startActivity(i);
+
+        incomeArr.clear();
+        // move this to a RecyclerView
+        Cursor cs = dbManager.fetchIncome();
+        if (cs != null) {
+            cs.moveToFirst();
+            while(!cs.isLast()) {
+                String[] expense = new String[4];
+                expense[0] = cs.getString(0);
+                //expense[1] = cc.getString(1); --------> DATEPICKER?
+                expense[2] = cs.getString(2);
+                expense[3] = cs.getString(3);
+                Log.d("",String.format("%5d %10s %7.2f\n %10s",
+                        cs.getInt(0),cs.getString(1),cs.getDouble(2),cs.getString(3))
+                );
+                //Remember to array database to array
+                incomeArr.add(expense);
+                cs.moveToNext();
+            }
+        }
+        Intent ii = new Intent(getContext(), DetailActivity.class);
+        Bundle bb = new Bundle();
+        bb.putSerializable("arraylist", (Serializable) incomeArr);
+        ii.putExtra("bundle", bb);
+        startActivity(ii);
     }
+}

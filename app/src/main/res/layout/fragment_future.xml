@@ -15,9 +15,38 @@
     <TextView
         android:id="@+id/txtStatus"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="68dp"
         android:gravity="center"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDetails"
+            android:layout_width="84dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="#E58B8B"
+            android:onClick="getData"
+            android:text="@string/btnDetails"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/txtBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
