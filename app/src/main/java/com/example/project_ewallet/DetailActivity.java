@@ -16,7 +16,7 @@ public class DetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_activity);
         Intent intent = getIntent();
-        Bundle b = intent.getBundleExtra("BUNDLE");
+        Bundle b = intent.getBundleExtra("bundle");
         ArrayList<String[]> list = (ArrayList<String[]>) b.getSerializable("ARRAYLIST");
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rView);

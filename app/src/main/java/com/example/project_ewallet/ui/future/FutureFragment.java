@@ -161,8 +161,8 @@ public class FutureFragment extends Fragment {
 
 
         Cursor c = dbManager.fetchExpense();
-        if (c != null) {
-            c.moveToFirst();
+        if (c != null && c.moveToFirst()) {
+
             while(!c.isLast()) {
                 String[] expense = new String[4];
                 expense[0] = c.getString(0);
@@ -183,8 +183,8 @@ public class FutureFragment extends Fragment {
 
         // move this to a RecyclerView
         Cursor cs = dbManager.fetchIncome();
-        if (cs != null) {
-            cs.moveToFirst();
+        if (cs != null && cs.moveToFirst()) {
+
             while(!cs.isLast()) {
 
                 String[] income = new String[4];

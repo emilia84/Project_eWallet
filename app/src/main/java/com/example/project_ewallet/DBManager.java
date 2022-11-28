@@ -51,13 +51,13 @@ public class DBManager {
 
     public Cursor fetchIncome() {
         String[] columns = new String[] { DBHelper.ID, DBHelper.AMOUNT, DBHelper.DATE, DBHelper.CATEGORIES };
-        Cursor cursor = database.query(DBHelper.INCOME_TABLE, columns, null, null, null, null, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM INCOME",null);
 
         return cursor;
     }
     public Cursor fetchExpense() {
         String[] columns = new String[] { DBHelper.ID, DBHelper.AMOUNT, DBHelper.DATE, DBHelper.CATEGORIES };
-        Cursor cursor = database.query(DBHelper.EXPENSE_TABLE, columns, null, null, null, null, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM EXPENSE",null);
 
         return cursor;
     }
