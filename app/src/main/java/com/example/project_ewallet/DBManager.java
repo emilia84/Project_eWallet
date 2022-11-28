@@ -62,22 +62,22 @@ public class DBManager {
         return cursor;
     }
 
-    public int updateIncome(long id, String categories, double amount, String date) {
+    public int updateIncome(long id, double amount, String date) {
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
-        contentValue.put(DBHelper.CATEGORIES, categories);
+//        contentValue.put(DBHelper.CATEGORIES, categories);
 
         int i = database.update(DBHelper.INCOME_TABLE, contentValues, DBHelper.ID + " = " + id, null);
         return i;
     }
-    public int updateExpense(long id, String categories, double amount, String date) {
+    public int updateExpense(long id, double amount, String date) {
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
-        contentValue.put(DBHelper.CATEGORIES, categories);
+//        contentValue.put(DBHelper.CATEGORIES, categories);
 
         int i = database.update(DBHelper.EXPENSE_TABLE, contentValues, DBHelper.ID + " = " + id, null);
         return i;

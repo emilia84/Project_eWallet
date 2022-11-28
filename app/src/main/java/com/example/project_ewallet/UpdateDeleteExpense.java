@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class UpdateDeleteIncome extends AppCompatActivity {
+public class UpdateDeleteExpense extends AppCompatActivity {
     private TextView reservation;
     private DBManager dbManager;
     private String id;
@@ -23,7 +23,7 @@ public class UpdateDeleteIncome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.update_delete_income);
+        setContentView(R.layout.update_delete_expense);
 
         Intent i = getIntent();
         String date = i.getStringExtra("date");
@@ -44,7 +44,7 @@ public class UpdateDeleteIncome extends AppCompatActivity {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(UpdateDeleteIncome.this,d,c.get(Calendar.YEAR),
+                new DatePickerDialog(UpdateDeleteExpense.this,d,c.get(Calendar.YEAR),
                         c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
                 reservation.setText(fmtDate.format(c.getTime()));
             }
@@ -69,16 +69,19 @@ public class UpdateDeleteIncome extends AppCompatActivity {
         Log.d("Application","onDestroy");
         dbManager.close();
     }
-    public void updateIncome(View v) {
+
+    public void updateExpense(View v) {
+        Button update = (Button)findViewById(R.id.btnUpdate);
         EditText amount = (EditText)findViewById(R.id.txtAmountExpense);
         reservation = (TextView) findViewById(R.id.txtRes);
 
+        String catVal = update.getText().toString();
         double amountVal = Double.parseDouble(amount.getText().toString());
         String date = reservation.getText().toString();
 
-//        dbManager.updateExpense(id,amountVal,date);
+//        dbManager.updateExpense(id,catVal,amountVal,date);
     }
-    public void deleteIncome(View v) {
+    public void deleteExpense(View v) {
 //        dbManager.deleteExpense(id);
     }
 }
