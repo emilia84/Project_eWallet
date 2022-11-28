@@ -28,7 +28,7 @@ public class IncomeActivity extends AppCompatActivity {
         dbManager.close();
     }
 
-    public void addData(View v) {
+    public void addIncome(View v) {
         String catVal = "";
         switch (v.getId()) {
             case R.id.btnDep:
@@ -48,6 +48,6 @@ public class IncomeActivity extends AppCompatActivity {
         }
         EditText amount = (EditText) findViewById(R.id.txtAmountIncome);
         double amountVal = Double.parseDouble(amount.getText().toString());
-        dbManager.insertExpense(catVal, amountVal);
+        dbManager.insertIncome(catVal, amountVal);
     }
 }

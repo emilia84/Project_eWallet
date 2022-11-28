@@ -36,11 +36,13 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         amount = i.getExtras().getDouble("salary");
 
         reservation = (TextView) findViewById(R.id.txtRes);
-        reservation.setText(date);
-//        txtCategory = (TextView) findViewById(R.id.txtCategory);
-//        txtCategory.setText(category);
+
+        reservation.setText("Your selected date: " + date);
+        txtCategory = (TextView) findViewById(R.id.txtCategory);
+        txtCategory.setText("Your selected category: " + category);
+
         txtAmount = (EditText) findViewById(R.id.txtAmountExpense);
-        txtAmount.setText(String.valueOf(amount));
+        txtAmount.setText("Your selected expense: " + String.valueOf(amount));
 
         Button but = (Button) findViewById(R.id.btnDate);
         but.setOnClickListener(new View.OnClickListener() {
@@ -73,52 +75,53 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         Log.d("Application","onDestroy");
         dbManager.close();
     }
-    public void addData(View v) {
-        String catVal="";
-        switch(v.getId()){
-            case R.id.btnMiscel:
-                Button miscel = (Button) findViewById(R.id.btnMiscel);
-                catVal = miscel.getText().toString();
-                break;
-            case R.id.btnBill:
-                Button bill = (Button) findViewById(R.id.btnBill);
-                catVal = bill.getText().toString();
-                break;
-            case R.id.btnClot:
-                Button clothes = (Button) findViewById(R.id.btnClot);
-                catVal = clothes.getText().toString();
-                break;
-            case R.id.btnFood:
-                Button food = (Button) findViewById(R.id.btnFood);
-                catVal = food.getText().toString();
-                break;
-            case R.id.btnHealth:
-                Button health = (Button) findViewById(R.id.btnHealth);
-                catVal = health.getText().toString();
-                break;
-            case R.id.btnHouse:
-                Button house = (Button) findViewById(R.id.btnHouse);
-                catVal = house.getText().toString();
-                break;
-            case R.id.btnTrans:
-                Button transport = (Button) findViewById(R.id.btnTrans);
-                catVal = transport.getText().toString();
-                break;
-            case R.id.btnToilet:
-                Button toilet = (Button) findViewById(R.id.btnToilet);
-                catVal = toilet.getText().toString();
-                break;
-            case R.id.btnEnt:
-                Button entertain = (Button) findViewById(R.id.btnEnt);
-                catVal = entertain.getText().toString();
-                break;
-            default:throw new RuntimeException();
 
-        }
-        EditText amount = (EditText) findViewById(R.id.txtAmountExpense);
-        double amountVal = Double.parseDouble(amount.getText().toString());
-        dbManager.insertExpense(catVal, amountVal);
-    }
+//    public void addNewExpense(View v) {
+//        String catVal="";
+//        switch(v.getId()){
+//            case R.id.btnMiscel:
+//                Button miscel = (Button) findViewById(R.id.btnMiscel);
+//                catVal = miscel.getText().toString();
+//                break;
+//            case R.id.btnBill:
+//                Button bill = (Button) findViewById(R.id.btnBill);
+//                catVal = bill.getText().toString();
+//                break;
+//            case R.id.btnClot:
+//                Button clothes = (Button) findViewById(R.id.btnClot);
+//                catVal = clothes.getText().toString();
+//                break;
+//            case R.id.btnFood:
+//                Button food = (Button) findViewById(R.id.btnFood);
+//                catVal = food.getText().toString();
+//                break;
+//            case R.id.btnHealth:
+//                Button health = (Button) findViewById(R.id.btnHealth);
+//                catVal = health.getText().toString();
+//                break;
+//            case R.id.btnHouse:
+//                Button house = (Button) findViewById(R.id.btnHouse);
+//                catVal = house.getText().toString();
+//                break;
+//            case R.id.btnTrans:
+//                Button transport = (Button) findViewById(R.id.btnTrans);
+//                catVal = transport.getText().toString();
+//                break;
+//            case R.id.btnToilet:
+//                Button toilet = (Button) findViewById(R.id.btnToilet);
+//                catVal = toilet.getText().toString();
+//                break;
+//            case R.id.btnEnt:
+//                Button entertain = (Button) findViewById(R.id.btnEnt);
+//                catVal = entertain.getText().toString();
+//                break;
+//            default:throw new RuntimeException();
+//
+//        }
+//        EditText amount = (EditText) findViewById(R.id.txtAmountExpense);
+//        double amountVal = Double.parseDouble(amount.getText().toString());
+//        dbManager.insertExpense(catVal, amountVal);
+//    }
 
     public void updateData(View v) {
         Button update = (Button)findViewById(R.id.btnUpdate);
@@ -134,7 +137,8 @@ public class UpdateDeleteActivity extends AppCompatActivity {
     public void deleteData(View v) {
         // you need to implement this
 
-//        dbManager.delete(id);
+
+//        dbManager.deleteExpense(id);
 
     }
 
