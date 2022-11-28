@@ -131,13 +131,15 @@ public class FutureFragment extends Fragment {
 
         //set color
         ArrayList<Integer> colors = new ArrayList<>();
-        colors.add(Color.parseColor("#304567"));
-        colors.add(Color.parseColor("#309967"));
-        colors.add(Color.parseColor("#476567"));
-        colors.add(Color.parseColor("#890567"));
-        colors.add(Color.parseColor("#a35567"));
-        colors.add(Color.parseColor("#ff5f67"));
-        colors.add(Color.parseColor("#3ca567"));
+        colors.add(Color.parseColor("#FFBE0B"));
+        colors.add(Color.parseColor("#FD8A09"));
+        colors.add(Color.parseColor("#FB5607"));
+        colors.add(Color.parseColor("#FD2133"));
+        colors.add(Color.parseColor("#FF006E"));
+        colors.add(Color.parseColor("#C11CAD"));
+        colors.add(Color.parseColor("#A22ACD"));
+        colors.add(Color.parseColor("#8338EC"));
+        colors.add(Color.parseColor("#3A86FF"));
 
         //collecting the entries with label name
         PieDataSet pieDataSet = new PieDataSet(pieEntries,null);
@@ -149,9 +151,12 @@ public class FutureFragment extends Fragment {
         PieData pieData = new PieData(pieDataSet);
         //showing the value of the entries, default true if not set
         pieData.setDrawValues(true);
-
+        //set word wrap
+        pieChart.getLegend().setWordWrapEnabled(true);
         pieChart.setData(pieData);
+        pieChart.setDrawEntryLabels(true);
         pieChart.invalidate();
+
     }
 
     private void initPieChart() {
