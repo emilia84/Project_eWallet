@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <Button
@@ -14,20 +14,18 @@
     <TextView
         android:id="@+id/txtRes"
         android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        android:layout_height="35dp"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/txtAmount"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Please enter your money"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textSize="20sp" />
+        android:text="Name"
+        android:textAlignment="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +39,6 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:onClick="addData"
             android:text="@string/btnMiscel" />
 
         <Button
@@ -129,6 +126,30 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:text="@string/btnBill" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/btnEdit" />
+
+        <Button
+            android:id="@+id/btnDel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/btnDel" />
     </LinearLayout>
 
 </LinearLayout>
