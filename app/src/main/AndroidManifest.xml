@@ -34,7 +34,10 @@
             android:name=".DetailActivity"
             android:exported="false"></activity>
         <activity
-            android:name=".UpdateDeleteActivity"
+            android:name=".UpdateDeleteExpense"
+            android:exported="false"></activity>
+        <activity
+            android:name=".UpdateDeleteIncome"
             android:exported="false"></activity>
     </application>
 

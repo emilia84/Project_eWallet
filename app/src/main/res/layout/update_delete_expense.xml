@@ -159,7 +159,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:onClick="updateData"
+            android:onClick="updateExpense"
             android:text="@string/btnUpdate" />
 
         <Button
@@ -169,7 +169,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:onClick="deleteData"
+            android:onClick="deleteExpense"
             android:text="@string/btnDel" />
     </LinearLayout>
 
