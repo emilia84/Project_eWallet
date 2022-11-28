@@ -1,7 +1,7 @@
 package com.example.project_ewallet.ui.future;
 
 
-=======
+
 import android.content.Intent;
 
 import android.database.Cursor;
@@ -49,7 +49,7 @@ public class FutureFragment extends Fragment {
 
         ArrayList<String[]> expenseArr = new ArrayList<>();
         ArrayList<String[]> incomeArr = new ArrayList<>();
-        private DBManager dbManager;
+
 
 
         public View onCreateView(@NonNull LayoutInflater inflater,
@@ -167,7 +167,7 @@ public class FutureFragment extends Fragment {
             while(!c.isLast()) {
                 String[] expense = new String[4];
                 expense[0] = c.getString(0);
-                //expense[1] = c.getString(1); //--------> DATEPICKER?
+                expense[1] = c.getString(1); //--------> DATEPICKER?
                 expense[2] = c.getString(2);
                 expense[3] = c.getString(3);
                 Log.d("",String.format("%5d %10s %7.2f\n %10s",
@@ -192,7 +192,7 @@ public class FutureFragment extends Fragment {
             while(!cs.isLast()) {
                 String[] expense = new String[4];
                 expense[0] = cs.getString(0);
-                //expense[1] = cc.getString(1); --------> DATEPICKER?
+                expense[1] = cs.getString(1);
                 expense[2] = cs.getString(2);
                 expense[3] = cs.getString(3);
                 Log.d("",String.format("%5d %10s %7.2f\n %10s",
