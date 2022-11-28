@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ExpenseActivity extends AppCompatActivity {
 //    private TextView reservation;
     private DBManager dbManager;
-    ArrayList<String[]> expenseArr = new ArrayList<>();
+//    ArrayList<String[]> expenseArr = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +29,7 @@ public class ExpenseActivity extends AppCompatActivity {
         Log.d("Application","onDestroy");
         dbManager.close();
     }
-    public void addData(View v) {
+    public void addExpense(View v) {
         String catVal="";
         switch(v.getId()){
             case R.id.btnMiscel:

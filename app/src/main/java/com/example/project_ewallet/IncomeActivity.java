@@ -30,7 +30,7 @@ public class IncomeActivity extends AppCompatActivity {
         dbManager.close();
     }
 
-    public void addData(View v) {
+    public void addIncome(View v) {
         String catVal = "";
         Log.d("debug point", String.valueOf(v.getId()));
         switch (v.getId()) {
@@ -52,6 +52,8 @@ public class IncomeActivity extends AppCompatActivity {
         EditText amount = (EditText) findViewById(R.id.txtAmountIncome);
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertIncome(catVal, amountVal);
+
         finish();
+
     }
 }
