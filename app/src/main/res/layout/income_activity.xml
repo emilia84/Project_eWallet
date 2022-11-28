@@ -27,6 +27,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:onClick="addData"
             android:text="@string/btnDep" />
 
         <Button
@@ -36,6 +37,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:onClick="addData"
             android:text="@string/btnSal" />
 
         <Button
@@ -45,6 +47,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:onClick="addData"
             android:text="@string/btnSav" />
     </LinearLayout>
 </LinearLayout>

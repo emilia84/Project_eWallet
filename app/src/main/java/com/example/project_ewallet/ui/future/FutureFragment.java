@@ -106,21 +106,45 @@ public class FutureFragment extends Fragment {
     private void showPieChart(){
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
-        String label = "type";
+
 
         //initializing data
 
+        Log.d("piechart", "pie chart showed");
 
+        for (String[] expense: expenseArr) {
+            if(typeAmountMap.containsKey(expense[3])){
+                typeAmountMap.put(expense[3],typeAmountMap.get(expense[3]) + Double.parseDouble(expense[2]));
+            }else{
+                typeAmountMap.put(expense[3],Double.parseDouble(expense[2]));
+            }
+
+        }
 
         //input data and fit data into pie chart entry
         for(String type: typeAmountMap.keySet()){
+
+            Log.d("keyset", type);
+            Log.d("amt", String.valueOf(typeAmountMap.get(type)));
             pieEntries.add(new PieEntry(typeAmountMap.get(type).floatValue(), type));
         }
 
+        //set color
+        ArrayList<Integer> colors = new ArrayList<>();
+        colors.add(Color.parseColor("#304567"));
+        colors.add(Color.parseColor("#309967"));
+        colors.add(Color.parseColor("#476567"));
+        colors.add(Color.parseColor("#890567"));
+        colors.add(Color.parseColor("#a35567"));
+        colors.add(Color.parseColor("#ff5f67"));
+        colors.add(Color.parseColor("#3ca567"));
+
         //collecting the entries with label name
-        PieDataSet pieDataSet = new PieDataSet(pieEntries,label);
+        PieDataSet pieDataSet = new PieDataSet(pieEntries,null);
         //setting text size of the value
         pieDataSet.setValueTextSize(12f);
+        //providing color list for coloring different entries
+        pieDataSet.setColors(colors);
         //grouping the data set from entry to chart
         PieData pieData = new PieData(pieDataSet);
         //showing the value of the entries, default true if not set
