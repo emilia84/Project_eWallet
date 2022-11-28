@@ -156,7 +156,7 @@ public class FutureFragment extends Fragment {
             binding = null;
         }
 
-<<<<<<< HEAD
+
 
     public void getData(View v) {
 
@@ -216,58 +216,5 @@ public class FutureFragment extends Fragment {
 
 
     }
-=======
-        //Cannot retrieve getData -> null pointer!!!!
-//    public void getData(View v) {
-//        expenseArr.clear();
-//
-//        Cursor c = dbManager.fetchExpense();
-//        if (c != null) {
-//            c.moveToFirst();
-//            while(!c.isLast()) {
-//                String[] expense = new String[4];
-//                expense[0] = c.getString(0);
-//                //expense[1] = c.getString(1); //--------> DATEPICKER?
-//                expense[2] = c.getString(2);
-//                expense[3] = c.getString(3);
-//                Log.d("",String.format("%5d %10s %7.2f\n %10s",
-//                        c.getInt(0),c.getString(1),c.getDouble(2),c.getString(3))
-//                );
-//
-//                expenseArr.add(expense);
-//                c.moveToNext();
-//            }
-//        }
-//        Intent i = new Intent(getContext(), DetailActivity.class);
-//        Bundle b = new Bundle();
-//        b.putSerializable("arraylist", (Serializable) expenseArr);
-//        i.putExtra("bundle", b);
-//        startActivity(i);
-//
-//        incomeArr.clear();
-//        // move this to a RecyclerView
-//        Cursor cs = dbManager.fetchIncome();
-//        if (cs != null) {
-//            cs.moveToFirst();
-//            while(!cs.isLast()) {
-//                String[] expense = new String[4];
-//                expense[0] = cs.getString(0);
-//                //expense[1] = cc.getString(1); --------> DATEPICKER?
-//                expense[2] = cs.getString(2);
-//                expense[3] = cs.getString(3);
-//                Log.d("",String.format("%5d %10s %7.2f\n %10s",
-//                        cs.getInt(0),cs.getString(1),cs.getDouble(2),cs.getString(3))
-//                );
-//                //Remember to array database to array
-//                incomeArr.add(expense);
-//                cs.moveToNext();
-//            }
-//        }
-//        Intent ii = new Intent(getContext(), DetailActivity.class);
-//        Bundle bb = new Bundle();
-//        bb.putSerializable("arraylist", (Serializable) incomeArr);
-//        ii.putExtra("bundle", bb);
-//        startActivity(ii);
-//    }
->>>>>>> emillia
+
 }

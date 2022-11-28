@@ -37,8 +37,8 @@ public class UpdateDeleteActivity extends AppCompatActivity {
 
         reservation = (TextView) findViewById(R.id.txtRes);
         reservation.setText(date);
-        txtCategory = (TextView) findViewById(R.id.txtCategory);
-        txtCategory.setText(category);
+//        txtCategory = (TextView) findViewById(R.id.txtCategory);
+//        txtCategory.setText(category);
         txtAmount = (EditText) findViewById(R.id.txtAmountExpense);
         txtAmount.setText(String.valueOf(amount));
 
