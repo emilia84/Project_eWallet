@@ -74,6 +74,7 @@ public class ExpenseActivity extends AppCompatActivity {
         EditText amount = (EditText) findViewById(R.id.txtAmountExpense);
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertExpense(catVal, amountVal);
+        finish();
     }
 
 }

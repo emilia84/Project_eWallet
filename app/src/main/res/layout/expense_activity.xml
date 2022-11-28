@@ -37,7 +37,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+
             android:onClick="addExpense"
+
             android:text="@string/btnClot" />
 
         <Button
@@ -47,7 +50,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnFood" />
 
     </LinearLayout>
@@ -64,7 +71,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnHealth" />
 
         <Button
@@ -74,7 +85,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnHouse" />
 
         <Button
@@ -84,7 +99,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnToilet" />
 
     </LinearLayout>
@@ -101,7 +120,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnTrans" />
 
         <Button
@@ -111,7 +134,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnEnt" />
 
         <Button
@@ -121,7 +148,11 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+
+            android:onClick="addData"
+
             android:onClick="addExpense"
+
             android:text="@string/btnBill" />
     </LinearLayout>
 

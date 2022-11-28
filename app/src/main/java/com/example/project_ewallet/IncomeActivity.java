@@ -19,6 +19,8 @@ public class IncomeActivity extends AppCompatActivity {
 
         dbManager = new DBManager(this);
         dbManager.open();
+
+
     }
 
     protected void onDestroy() {
@@ -30,6 +32,7 @@ public class IncomeActivity extends AppCompatActivity {
 
     public void addIncome(View v) {
         String catVal = "";
+        Log.d("debug point", String.valueOf(v.getId()));
         switch (v.getId()) {
             case R.id.btnDep:
                 Button deposit = (Button) findViewById(R.id.btnDep);
@@ -49,5 +52,8 @@ public class IncomeActivity extends AppCompatActivity {
         EditText amount = (EditText) findViewById(R.id.txtAmountIncome);
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertIncome(catVal, amountVal);
+
+        finish();
+
     }
 }
