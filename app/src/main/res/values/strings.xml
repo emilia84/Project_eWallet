@@ -26,13 +26,27 @@
     <string name="btnDep">Deposit</string>
     <string name="btnSal">Salary</string>
     <string name="btnSav">Savings</string>
+
+
     <string name="add_expense">Add Expense</string>
     <string name="add_income">Add income</string>
+
+
+    <string name="add_expense">Add Expense</string>
+    <string name="add_income">Add income</string>
+
     <string name="txtInterval">Choose Interval</string>
     <string name="radMonth">Month Interval</string>
     <string name="radWeek">Week Interval</string>
     <string name="btnDel">Delete</string>
     <string name="btnEdit">Edit</string>
     <string name="btnDate">Select the date</string>
+
+    <string name="export_expenses">Export Expenses</string>
+    <string name="export_income">Export Income</string>
+
+
+
     <string name="btnDetails">Details</string>
+
 </resources>

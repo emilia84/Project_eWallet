@@ -1,6 +1,9 @@
 package com.example.project_ewallet.ui.future;
 
+
+=======
 import android.content.Intent;
+
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,9 +19,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.project_ewallet.DBManager;
+
 import com.example.project_ewallet.DetailActivity;
 import com.example.project_ewallet.ExpenseActivity;
 import com.example.project_ewallet.IncomeActivity;
+
 import com.example.project_ewallet.R;
 import com.example.project_ewallet.databinding.FragmentFutureBinding;
 import com.github.mikephil.charting.animation.Easing;
@@ -38,9 +43,14 @@ public class FutureFragment extends Fragment {
 
         private FragmentFutureBinding binding;
         private PieChart pieChart;
+
+        private DBManager dbManager;
+        private Map<String, Double> typeAmountMap = new HashMap<>();
+
         ArrayList<String[]> expenseArr = new ArrayList<>();
         ArrayList<String[]> incomeArr = new ArrayList<>();
         private DBManager dbManager;
+
 
         public View onCreateView(@NonNull LayoutInflater inflater,
                                  ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +60,8 @@ public class FutureFragment extends Fragment {
 
             View root = binding.getRoot();
             pieChart = (PieChart) root.findViewById(R.id.chart);
-
+            dbManager = new DBManager(this.getActivity());
+            dbManager.open();
             initPieChart();
             showPieChart();
 
@@ -80,21 +91,27 @@ public class FutureFragment extends Fragment {
             return root;
         }
 
+    private void getData(){
+            Cursor c = dbManager.fetchExpense();
+            if (c.getCount() > 0){
+                c.moveToFirst();
+                while(!c.isLast()){
+                    typeAmountMap.put(c.getString(3),c.getDouble(1));
+                    c.moveToNext();
+
+                }
+            }
+    }
+
+
     private void showPieChart(){
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
         String label = "type";
 
         //initializing data
-        Map<String, Integer> typeAmountMap = new HashMap<>();
-        typeAmountMap.put("Toys",200);
-        typeAmountMap.put("Snacks",230);
-        typeAmountMap.put("Clothes",100);
-        typeAmountMap.put("Stationary",500);
-        typeAmountMap.put("Phone",50);
 
-        //initializing colors for the entries
-
+        getData();
 
         //input data and fit data into pie chart entry
         for(String type: typeAmountMap.keySet()){
