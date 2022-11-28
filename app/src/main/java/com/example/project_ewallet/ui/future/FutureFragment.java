@@ -1,7 +1,6 @@
 package com.example.project_ewallet.ui.future;
 
 
-=======
 import android.content.Intent;
 
 import android.database.Cursor;
@@ -49,7 +48,10 @@ public class FutureFragment extends Fragment {
 
         ArrayList<String[]> expenseArr = new ArrayList<>();
         ArrayList<String[]> incomeArr = new ArrayList<>();
-        private DBManager dbManager;
+
+        Double totalIncome = 0.0;
+        Double totalExpense = 0.0;
+
 
 
         public View onCreateView(@NonNull LayoutInflater inflater,
@@ -63,13 +65,21 @@ public class FutureFragment extends Fragment {
             dbManager = new DBManager(this.getActivity());
             dbManager.open();
             initPieChart();
+            getData(root);
             showPieChart();
 
             Button btnDetails = (Button)root.findViewById(R.id.btnDetails);
             btnDetails.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(view.getContext(), DetailActivity.class));
+
+                    Intent i = new Intent(view.getContext(), DetailActivity.class);
+                    Bundle args = new Bundle();
+                    args.putSerializable("expense",(Serializable)expenseArr);
+                    args.putSerializable("income",(Serializable)incomeArr);
+                    i.putExtra("bundle",args);
+                    startActivity(i);
+
                 }
             });
             Button btnExp = (Button)root.findViewById(R.id.btnExpense);
@@ -91,17 +101,6 @@ public class FutureFragment extends Fragment {
             return root;
         }
 
-    private void getData(){
-            Cursor c = dbManager.fetchExpense();
-            if (c.getCount() > 0){
-                c.moveToFirst();
-                while(!c.isLast()){
-                    typeAmountMap.put(c.getString(3),c.getDouble(1));
-                    c.moveToNext();
-
-                }
-            }
-    }
 
 
     private void showPieChart(){
@@ -111,7 +110,7 @@ public class FutureFragment extends Fragment {
 
         //initializing data
 
-        getData();
+
 
         //input data and fit data into pie chart entry
         for(String type: typeAmountMap.keySet()){
@@ -157,17 +156,20 @@ public class FutureFragment extends Fragment {
             binding = null;
         }
 
-        //Cannot retrieve getData -> null pointer!!!!
+
+
     public void getData(View v) {
-        expenseArr.clear();
+
 
         Cursor c = dbManager.fetchExpense();
-        if (c != null) {
-            c.moveToFirst();
+        if (c != null && c.moveToFirst()) {
+
             while(!c.isLast()) {
                 String[] expense = new String[4];
                 expense[0] = c.getString(0);
-                //expense[1] = c.getString(1); //--------> DATEPICKER?
+
+                expense[1] = c.getString(1);
+
                 expense[2] = c.getString(2);
                 expense[3] = c.getString(3);
                 Log.d("",String.format("%5d %10s %7.2f\n %10s",
@@ -178,35 +180,41 @@ public class FutureFragment extends Fragment {
                 c.moveToNext();
             }
         }
-        Intent i = new Intent(getContext(), DetailActivity.class);
-        Bundle b = new Bundle();
-        b.putSerializable("arraylist", (Serializable) expenseArr);
-        i.putExtra("bundle", b);
-        startActivity(i);
 
-        incomeArr.clear();
+
         // move this to a RecyclerView
         Cursor cs = dbManager.fetchIncome();
-        if (cs != null) {
-            cs.moveToFirst();
+        if (cs != null && cs.moveToFirst()) {
+
             while(!cs.isLast()) {
-                String[] expense = new String[4];
-                expense[0] = cs.getString(0);
-                //expense[1] = cc.getString(1); --------> DATEPICKER?
-                expense[2] = cs.getString(2);
-                expense[3] = cs.getString(3);
+
+                String[] income = new String[4];
+                income[0] = cs.getString(0);
+                income[1] = cs.getString(1);
+                income[2] = cs.getString(2);
+                income[3] = cs.getString(3);
+
                 Log.d("",String.format("%5d %10s %7.2f\n %10s",
                         cs.getInt(0),cs.getString(1),cs.getDouble(2),cs.getString(3))
                 );
-                //Remember to array database to array
-                incomeArr.add(expense);
+
+                incomeArr.add(income);
                 cs.moveToNext();
             }
         }
-        Intent ii = new Intent(getContext(), DetailActivity.class);
-        Bundle bb = new Bundle();
-        bb.putSerializable("arraylist", (Serializable) incomeArr);
-        ii.putExtra("bundle", bb);
-        startActivity(ii);
+
+
+        //get total income and expense
+        for (String [] strArr : expenseArr) {
+            totalExpense += Double.parseDouble(strArr[2]);
+
+        }
+        for (String [] strArr : incomeArr) {
+            totalIncome += Double.parseDouble(strArr[2]);
+
+        }
+
+
     }
+
 }

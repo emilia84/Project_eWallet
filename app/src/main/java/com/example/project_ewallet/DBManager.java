@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DBManager {
@@ -33,7 +34,7 @@ public class DBManager {
 
     public void insertIncome( String categories, double amount) {
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         contentValue.put(DBHelper.AMOUNT, amount);
         contentValue.put(DBHelper.CATEGORIES, categories);
 
@@ -41,7 +42,7 @@ public class DBManager {
     }
     public void insertExpense( String categories, double amount) {
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         contentValue.put(DBHelper.AMOUNT, amount);
         contentValue.put(DBHelper.CATEGORIES, categories);
 
@@ -50,31 +51,31 @@ public class DBManager {
 
     public Cursor fetchIncome() {
         String[] columns = new String[] { DBHelper.ID, DBHelper.AMOUNT, DBHelper.DATE, DBHelper.CATEGORIES };
-        Cursor cursor = database.query(DBHelper.INCOME_TABLE, columns, null, null, null, null, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM INCOME",null);
 
         return cursor;
     }
     public Cursor fetchExpense() {
         String[] columns = new String[] { DBHelper.ID, DBHelper.AMOUNT, DBHelper.DATE, DBHelper.CATEGORIES };
-        Cursor cursor = database.query(DBHelper.EXPENSE_TABLE, columns, null, null, null, null, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM EXPENSE",null);
 
         return cursor;
     }
 
-    public int updateIncome(long id, String categories, double amount, Date date) {
+    public int updateIncome(long id, String categories, double amount, String date) {
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
         contentValue.put(DBHelper.CATEGORIES, categories);
 
         int i = database.update(DBHelper.INCOME_TABLE, contentValues, DBHelper.ID + " = " + id, null);
         return i;
     }
-    public int updateExpense(long id, String categories, double amount, Date date) {
+    public int updateExpense(long id, String categories, double amount, String date) {
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
         contentValue.put(DBHelper.CATEGORIES, categories);
 

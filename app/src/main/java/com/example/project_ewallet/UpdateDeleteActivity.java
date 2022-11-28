@@ -12,18 +12,36 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class UpdateDeleteActivity extends AppCompatActivity {
     private TextView reservation;
     private DBManager dbManager;
+    private String date;
+    private String id;
+    private String category;
+    private double amount;
+    private EditText txtAmount;
+    private TextView txtCategory;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_delete_expense);
 
+        Intent i = getIntent();
+        date = i.getStringExtra("date");
+        id = i.getStringExtra("id");
+        category = i.getStringExtra("category");
+        amount = i.getExtras().getDouble("salary");
+
         reservation = (TextView) findViewById(R.id.txtRes);
+        reservation.setText(date);
+//        txtCategory = (TextView) findViewById(R.id.txtCategory);
+//        txtCategory.setText(category);
+        txtAmount = (EditText) findViewById(R.id.txtAmountExpense);
+        txtAmount.setText(String.valueOf(amount));
+
         Button but = (Button) findViewById(R.id.btnDate);
         but.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,13 +51,14 @@ public class UpdateDeleteActivity extends AppCompatActivity {
                 reservation.setText(fmtDate.format(c.getTime()));
             }
         });
-        Intent i = getIntent();
+
+
 
         dbManager = new DBManager(this);
         dbManager.open();
     }
     Calendar c = Calendar.getInstance();
-    DateFormat fmtDate = DateFormat.getDateInstance();
+    SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -96,27 +115,47 @@ public class UpdateDeleteActivity extends AppCompatActivity {
             default:throw new RuntimeException();
 
         }
-        EditText amount = (EditText) findViewById(R.id.txtAmount);
+        EditText amount = (EditText) findViewById(R.id.txtAmountExpense);
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertExpense(catVal, amountVal);
     }
+
     public void updateData(View v) {
-        Button update = (Button)findViewById(R.id.btnEdit);
-        EditText amount = (EditText)findViewById(R.id.txtAmount);
-        EditText id = (EditText) findViewById(R.id.txtID);
-        Date date;
+        Button update = (Button)findViewById(R.id.btnUpdate);
+        EditText amount = (EditText)findViewById(R.id.txtAmountExpense);
+        reservation = (TextView) findViewById(R.id.txtRes);
 
         String catVal = update.getText().toString();
-        long idVal = Long.parseLong(id.getText().toString());
         double amountVal = Double.parseDouble(amount.getText().toString());
-        Date date;
+        String date = reservation.getText().toString();
 
-        dbManager.update(idVal,catVal,amountVal,date);
+//        dbManager.updateExpense(id,catVal,amountVal,date);
     }
     public void deleteData(View v) {
         // you need to implement this
-        EditText id = (EditText) findViewById(R.id.txtID);
-        long idVal = Long.parseLong(id.getText().toString());
-        dbManager.delete(idVal);
+
+//        dbManager.delete(id);
+
     }
+
+//    public void updateData(View v) {
+//        Button update = (Button)findViewById(R.id.btnEdit);
+//        EditText amount = (EditText)findViewById(R.id.txtAmount);
+//        EditText id = (EditText) findViewById(R.id.txtID);
+//        Date date;
+//
+//        String catVal = update.getText().toString();
+//        long idVal = Long.parseLong(id.getText().toString());
+//        double amountVal = Double.parseDouble(amount.getText().toString());
+//        Date date;
+//
+//        dbManager.update(idVal,catVal,amountVal,date);
+//    }
+//    public void deleteData(View v) {
+//        // you need to implement this
+//        EditText id = (EditText) findViewById(R.id.txtID);
+//        long idVal = Long.parseLong(id.getText().toString());
+//        dbManager.delete(idVal);
+//    }
+
 }
