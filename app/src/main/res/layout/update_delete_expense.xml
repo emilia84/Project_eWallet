@@ -23,119 +23,129 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Please enter your money"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/txtCategory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="20sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <Button
-            android:id="@+id/btnMiscel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnMiscel" />
+<!--        <Button-->
+<!--            android:id="@+id/btnMiscel"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnMiscel" />-->
 
-        <Button
-            android:id="@+id/btnClot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnClot" />
+<!--        <Button-->
+<!--            android:id="@+id/btnClot"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnClot" />-->
 
-        <Button
-            android:id="@+id/btnFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnFood" />
+<!--        <Button-->
+<!--            android:id="@+id/btnFood"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnFood" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <Button
-            android:id="@+id/btnHealth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnHealth" />
+<!--        <Button-->
+<!--            android:id="@+id/btnHealth"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnHealth" />-->
 
-        <Button
-            android:id="@+id/btnHouse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnHouse" />
+<!--        <Button-->
+<!--            android:id="@+id/btnHouse"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addExpense"-->
+<!--            android:text="@string/btnHouse" />-->
 
-        <Button
-            android:id="@+id/btnToilet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnToilet" />
+<!--        <Button-->
+<!--            android:id="@+id/btnToilet"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addExpense"-->
+<!--            android:text="@string/btnToilet" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <Button
-            android:id="@+id/btnTrans"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnTrans" />
+<!--        <Button-->
+<!--            android:id="@+id/btnTrans"-->
+<!--            android:layout_width="155dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnTrans" />-->
 
-        <Button
-            android:id="@+id/btnEnt"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnEnt" />
+<!--        <Button-->
+<!--            android:id="@+id/btnEnt"-->
+<!--            android:layout_width="135dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnEnt" />-->
 
-        <Button
-            android:id="@+id/btnBill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnBill" />
-    </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btnBill"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="addNewExpense"-->
+<!--            android:text="@string/btnBill" />-->
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -149,6 +159,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:onClick="updateData"
             android:text="@string/btnUpdate" />
 
         <Button
@@ -158,6 +169,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:onClick="deleteData"
             android:text="@string/btnDel" />
     </LinearLayout>
 
