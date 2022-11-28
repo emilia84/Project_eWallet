@@ -13,11 +13,11 @@
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/txtSal"
+        android:id="@+id/txtAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/txtSal"
+        android:text="@string/txtAmount"
         android:textAlignment="center"
         android:textSize="20sp" />
 

@@ -17,12 +17,19 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(R.layout.detail_activity);
         Intent intent = getIntent();
         Bundle b = intent.getBundleExtra("bundle");
-        ArrayList<String[]> list = (ArrayList<String[]>) b.getSerializable("arraylist");
+        ArrayList<String[]> expense = (ArrayList<String[]>) b.getSerializable("expense");
+        ArrayList<String[]> income = (ArrayList<String[]>) b.getSerializable("income");
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rView);
-        DetailAdapter adapter = new DetailAdapter(list);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        RecyclerView recyclerViewExpense = (RecyclerView) findViewById(R.id.rViewExpense);
+        DetailAdapter adapterExpense = new DetailAdapter(expense);
+        recyclerViewExpense.setHasFixedSize(true);
+        recyclerViewExpense.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewExpense.setAdapter(adapterExpense);
+
+        RecyclerView recyclerViewIncome = (RecyclerView) findViewById(R.id.rViewIncome);
+        DetailAdapter adapterIncome = new DetailAdapter(income);
+        recyclerViewIncome.setHasFixedSize(true);
+        recyclerViewIncome.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewIncome.setAdapter(adapterIncome);
     }
 }

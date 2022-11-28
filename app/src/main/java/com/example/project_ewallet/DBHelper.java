@@ -24,12 +24,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Creating table query
     private static final String CREATE_INCOME = "create table " + INCOME_TABLE + "(" + ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DATE + " DATE NOT NULL, "
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DATE + " TEXT NOT NULL, "
             + AMOUNT + " DOUBLE(9,2) NOT NULL, "
             + CATEGORIES + " TEXT NOT NULL );";
 
     private static final String CREATE_EXPENSE = "create table " + EXPENSE_TABLE + "(" + ID
-            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DATE + " DATE NOT NULL, "
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + DATE + " TEXT NOT NULL, "
             + AMOUNT + " DOUBLE(9,2) NOT NULL, "
             + CATEGORIES + " TEXT NOT NULL );";
 
