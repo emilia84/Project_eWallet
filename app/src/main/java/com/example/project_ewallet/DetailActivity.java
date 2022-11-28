@@ -17,8 +17,10 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(R.layout.detail_activity);
         Intent intent = getIntent();
         Bundle b = intent.getBundleExtra("bundle");
+
         ArrayList<String[]> expense = (ArrayList<String[]>) b.getSerializable("expense");
         ArrayList<String[]> income = (ArrayList<String[]>) b.getSerializable("income");
+
 
         RecyclerView recyclerViewExpense = (RecyclerView) findViewById(R.id.rViewExpense);
         DetailAdapter adapterExpense = new DetailAdapter(expense);

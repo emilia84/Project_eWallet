@@ -36,9 +36,11 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         amount = i.getExtras().getDouble("salary");
 
         reservation = (TextView) findViewById(R.id.txtRes);
+
         reservation.setText("Your selected date: " + date);
         txtCategory = (TextView) findViewById(R.id.txtCategory);
         txtCategory.setText("Your selected category: " + category);
+
         txtAmount = (EditText) findViewById(R.id.txtAmountExpense);
         txtAmount.setText("Your selected expense: " + String.valueOf(amount));
 
@@ -51,6 +53,8 @@ public class UpdateDeleteActivity extends AppCompatActivity {
                 reservation.setText(fmtDate.format(c.getTime()));
             }
         });
+
+
 
         dbManager = new DBManager(this);
         dbManager.open();
@@ -71,6 +75,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         Log.d("Application","onDestroy");
         dbManager.close();
     }
+
 //    public void addNewExpense(View v) {
 //        String catVal="";
 //        switch(v.getId()){
@@ -117,6 +122,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
 //        double amountVal = Double.parseDouble(amount.getText().toString());
 //        dbManager.insertExpense(catVal, amountVal);
 //    }
+
     public void updateData(View v) {
         Button update = (Button)findViewById(R.id.btnUpdate);
         EditText amount = (EditText)findViewById(R.id.txtAmountExpense);
@@ -131,6 +137,29 @@ public class UpdateDeleteActivity extends AppCompatActivity {
     public void deleteData(View v) {
         // you need to implement this
 
+
 //        dbManager.deleteExpense(id);
+
     }
+
+//    public void updateData(View v) {
+//        Button update = (Button)findViewById(R.id.btnEdit);
+//        EditText amount = (EditText)findViewById(R.id.txtAmount);
+//        EditText id = (EditText) findViewById(R.id.txtID);
+//        Date date;
+//
+//        String catVal = update.getText().toString();
+//        long idVal = Long.parseLong(id.getText().toString());
+//        double amountVal = Double.parseDouble(amount.getText().toString());
+//        Date date;
+//
+//        dbManager.update(idVal,catVal,amountVal,date);
+//    }
+//    public void deleteData(View v) {
+//        // you need to implement this
+//        EditText id = (EditText) findViewById(R.id.txtID);
+//        long idVal = Long.parseLong(id.getText().toString());
+//        dbManager.delete(idVal);
+//    }
+
 }
