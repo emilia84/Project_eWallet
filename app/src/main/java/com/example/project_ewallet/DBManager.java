@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;
@@ -34,6 +35,10 @@ public class DBManager {
     // ================================================
 
     public void insertIncome( String categories, double amount) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("data_changed", true)
+                .apply();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         contentValue.put(DBHelper.AMOUNT, amount);
@@ -42,6 +47,10 @@ public class DBManager {
         database.insert(DBHelper.INCOME_TABLE, null, contentValue);
     }
     public void insertExpense( String categories, double amount) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("data_changed", true)
+                .apply();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
         contentValue.put(DBHelper.AMOUNT, amount);
@@ -63,7 +72,13 @@ public class DBManager {
         return cursor;
     }
 
-    public int updateIncome(long id, double amount, String date) {
+
+    public int updateIncome(long id, String categories, double amount, String date) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("data_changed", true)
+                .apply();
+
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
@@ -73,7 +88,13 @@ public class DBManager {
         int i = database.update(DBHelper.INCOME_TABLE, contentValues, DBHelper.ID + " = " + id, null);
         return i;
     }
-    public int updateExpense(long id, double amount, String date) {
+
+    public int updateExpense(long id, String categories, double amount, String date) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("data_changed", true)
+                .apply();
+
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
@@ -86,9 +107,17 @@ public class DBManager {
 
     // ====================================================
     public void deleteIncome(long id) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("data_changed", true)
+                .apply();
         database.delete(DBHelper.INCOME_TABLE, DBHelper.ID + "=" + id, null);
     }
     public void deleteExpense(long id) {
+        PreferenceManager.getDefaultSharedPreferences(context)
+                .edit()
+                .putBoolean("data_changed", true)
+                .apply();
         database.delete(DBHelper.EXPENSE_TABLE, DBHelper.ID + "=" + id, null);
     }
 }
