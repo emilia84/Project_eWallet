@@ -1,21 +1,27 @@
 package com.example.project_ewallet.ui.future;
 
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.project_ewallet.DBManager;
 
@@ -53,7 +59,19 @@ public class FutureFragment extends Fragment {
         Double totalExpense = 0.0;
 
 
+        @Override
+        public void onResume() {
 
+            super.onResume();
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+
+            if (prefs.getBoolean("data_changed", false)) {
+                prefs.edit().remove("data_changed").apply();
+            getParentFragmentManager().beginTransaction().detach(this).commit();
+            getParentFragmentManager().beginTransaction().attach(this).commit();
+
+            }
+        }
         public View onCreateView(@NonNull LayoutInflater inflater,
                                  ViewGroup container, Bundle savedInstanceState) {
 
@@ -62,10 +80,13 @@ public class FutureFragment extends Fragment {
 
             View root = binding.getRoot();
             pieChart = (PieChart) root.findViewById(R.id.chart);
+            TextView txtStatus = (TextView) root.findViewById(R.id.txtStatus);
+
             dbManager = new DBManager(this.getActivity());
             dbManager.open();
             initPieChart();
             getData(root);
+            txtStatus.setText("Balance: " + (totalIncome-totalExpense));
             showPieChart();
 
             Button btnDetails = (Button)root.findViewById(R.id.btnDetails);
@@ -153,8 +174,12 @@ public class FutureFragment extends Fragment {
         pieData.setDrawValues(true);
         //set word wrap
         pieChart.getLegend().setWordWrapEnabled(true);
+
+       pieChart.setNoDataText("No data exists!");
+
         pieChart.setData(pieData);
-        pieChart.setDrawEntryLabels(true);
+        pieChart.setDrawEntryLabels(false);
+        pieChart.notifyDataSetChanged();
         pieChart.invalidate();
 
     }
@@ -176,7 +201,7 @@ public class FutureFragment extends Fragment {
         //highlight the entry when it is tapped, default true if not set
         pieChart.setHighlightPerTapEnabled(true);
         //adding animation so the entries pop up from 0 degree
-        pieChart.animateY(1400, Easing.EaseInOutQuad);
+        pieChart.animateY(1500, Easing.EaseInOutQuad);
 
     }
         public void onDestroyView(){
@@ -193,7 +218,7 @@ public class FutureFragment extends Fragment {
         Cursor c = dbManager.fetchExpense();
         if (c != null && c.moveToFirst()) {
 
-            while(!c.isLast()) {
+            while(!c.isAfterLast()) {
                 String[] expense = new String[4];
                 expense[0] = c.getString(0);
 
@@ -215,7 +240,7 @@ public class FutureFragment extends Fragment {
         Cursor cs = dbManager.fetchIncome();
         if (cs != null && cs.moveToFirst()) {
 
-            while(!cs.isLast()) {
+            while(!cs.isAfterLast()) {
 
                 String[] income = new String[4];
                 income[0] = cs.getString(0);
@@ -242,7 +267,8 @@ public class FutureFragment extends Fragment {
             totalIncome += Double.parseDouble(strArr[2]);
 
         }
-
+        pieChart.notifyDataSetChanged();
+        pieChart.invalidate();
 
     }
 
