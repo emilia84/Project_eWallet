@@ -15,7 +15,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String AMOUNT = "amount";
     public static final String CATEGORIES = "categories";
 
-
     // Database Information
     static final String DB_NAME = "EWALLET.DB";
 
@@ -36,7 +35,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDB) {

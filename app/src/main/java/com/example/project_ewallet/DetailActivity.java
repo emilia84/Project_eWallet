@@ -21,7 +21,6 @@ public class DetailActivity extends AppCompatActivity{
         ArrayList<String[]> expense = (ArrayList<String[]>) b.getSerializable("expense");
         ArrayList<String[]> income = (ArrayList<String[]>) b.getSerializable("income");
 
-
         RecyclerView recyclerViewExpense = (RecyclerView) findViewById(R.id.rViewExpense);
         DetailAdapter adapterExpense = new DetailAdapter(expense);
         recyclerViewExpense.setHasFixedSize(true);

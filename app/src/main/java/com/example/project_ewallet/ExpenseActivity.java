@@ -8,8 +8,6 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 public class ExpenseActivity extends AppCompatActivity {
 //    private TextView reservation;
     private DBManager dbManager;
@@ -29,6 +27,7 @@ public class ExpenseActivity extends AppCompatActivity {
         Log.d("Application","onDestroy");
         dbManager.close();
     }
+
     public void addExpense(View v) {
         String catVal="";
         switch(v.getId()){
@@ -71,10 +70,9 @@ public class ExpenseActivity extends AppCompatActivity {
             default:throw new RuntimeException();
 
         }
-        EditText amount = (EditText) findViewById(R.id.txtAmountExpense);
+        EditText amount = (EditText) findViewById(R.id.txtUpdateAmount);
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertExpense(catVal, amountVal);
         finish();
     }
-
 }

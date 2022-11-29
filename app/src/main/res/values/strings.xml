@@ -3,7 +3,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">BC eWallet</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_subtitle">Hello there, Welcome to eWallet App.</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     
@@ -11,6 +11,7 @@
     <string name="menu_future">Future recurring record mode</string>
     <string name="menu_setUpRecur">Set up recurring expenses</string>
     <string name="menu_export">Export CSV file</string>
+
     <string name="txtSal">Salary</string>
     <string name="txtCat">Category</string>
     <string name="txtDate">Date</string>

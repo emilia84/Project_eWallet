@@ -19,8 +19,6 @@ public class IncomeActivity extends AppCompatActivity {
 
         dbManager = new DBManager(this);
         dbManager.open();
-
-
     }
 
     protected void onDestroy() {
@@ -54,6 +52,5 @@ public class IncomeActivity extends AppCompatActivity {
         dbManager.insertIncome(catVal, amountVal);
 
         finish();
-
     }
 }
