@@ -37,11 +37,20 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
         holder.txtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent i = new Intent(view.getContext(), UpdateDeleteActivity.class);
+                Intent i = new Intent(view.getContext(), UpdateDeleteExpense.class);
                 i.putExtra("id", item[0]);
                 i.putExtra("date", R.id.txtDate);
-                i.putExtra("salary", R.id.txtAmount);
+                i.putExtra("amount", R.id.txtAmount);
+                i.putExtra("category", R.id.txtCat);
+            }
+        });
+        holder.txtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), UpdateDeleteIncome.class);
+                i.putExtra("id", item[0]);
+                i.putExtra("date", R.id.txtDate);
+                i.putExtra("amount", R.id.txtAmount);
                 i.putExtra("category", R.id.txtCat);
             }
         });
@@ -60,7 +69,6 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
             this.txtCat = (TextView) itemView.findViewById(R.id.txtCat);
             this.txtSal = (TextView) itemView.findViewById(R.id.txtAmount);
             this.txtDate = (TextView) itemView.findViewById(R.id.txtDate);
-
         }
     }
 }
