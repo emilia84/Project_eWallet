@@ -2,6 +2,7 @@ package com.example.project_ewallet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity{
 
+    private DBManager dbManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,5 +34,14 @@ public class DetailActivity extends AppCompatActivity{
         recyclerViewIncome.setHasFixedSize(true);
         recyclerViewIncome.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewIncome.setAdapter(adapterIncome);
+
+        dbManager = new DBManager(this);
+        dbManager.open();
+    }
+    protected void onDestroy() {
+
+        super.onDestroy();
+        Log.d("Application","onDestroy");
+        dbManager.close();
     }
 }

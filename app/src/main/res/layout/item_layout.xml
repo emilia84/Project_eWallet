@@ -5,7 +5,7 @@
 
     <TextView
         android:id="@+id/txtCat"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/txtDate"
@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/txtAmount"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/txtAmount"
@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/txtDate"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/txtCat"

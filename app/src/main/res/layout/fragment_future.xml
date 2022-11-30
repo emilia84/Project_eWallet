@@ -10,30 +10,42 @@
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="381dp"
         android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/txtStatus"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
         android:text="TextView"
         android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="33dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/search" />
 
         <Button
             android:id="@+id/btnDetails"
-            android:layout_width="84dp"
-            android:layout_height="wrap_content"
+            android:layout_width="120dp"
+            android:layout_height="57dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="20dp"
             android:layout_weight="1"
-            android:background="#E58B8B"
             android:onClick="getData"
             android:text="@string/btnDetails"
             tools:ignore="TextContrastCheck" />
@@ -42,30 +54,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/add" />
 
         <Button
             android:id="@+id/btnExpense"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="#E58B8B"
             android:text="@string/add_expense"
             tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/btnIncome"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="10dp"
             android:layout_weight="1"
-            android:background="#80CED1"
             android:text="@string/add_income"
             tools:ignore="TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/minus" />
+
     </LinearLayout>
 
 </LinearLayout>

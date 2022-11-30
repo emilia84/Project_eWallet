@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EBFBFA"
@@ -10,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="40dp"
         android:text="@string/btnDate" />
 
     <TextView
@@ -18,38 +21,59 @@
         android:layout_height="35dp"
         android:textAlignment="center" />
 
+    <TextView
+        android:id="@+id/txtInterval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/txtInterval"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="chooseInterval">
+
+        <RadioButton
+            android:id="@+id/radMonth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:onClick="chooseInterval"
+            android:text="@string/radMonth"
+            android:textSize="16sp" />
+
+        <RadioButton
+            android:id="@+id/radWeek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:checked="true"
+            android:onClick="chooseInterval"
+            android:text="@string/radWeek"
+            android:textSize="16sp" />
+
+    </RadioGroup>
+
     <EditText
         android:id="@+id/txtUpdateAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
+        android:hint="Please enter your money"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnMiscel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnMiscel" />
-
-        <Button
-            android:id="@+id/btnClot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnClot" />
 
         <Button
             android:id="@+id/btnFood"
@@ -59,13 +83,6 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:text="@string/btnFood" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnHealth"
@@ -85,6 +102,22 @@
             android:layout_weight="1"
             android:text="@string/btnHouse" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/btnBill" />
+
         <Button
             android:id="@+id/btnToilet"
             android:layout_width="wrap_content"
@@ -94,12 +127,30 @@
             android:layout_weight="1"
             android:text="@string/btnToilet" />
 
+        <Button
+            android:id="@+id/btnClot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/btnClot" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnMiscel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:text="@string/btnMiscel" />
 
         <Button
             android:id="@+id/btnTrans"
@@ -110,6 +161,13 @@
             android:layout_weight="1"
             android:text="@string/btnTrans" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/btnEnt"
             android:layout_width="135dp"
@@ -118,44 +176,6 @@
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
             android:text="@string/btnEnt" />
-
-        <Button
-            android:id="@+id/btnBill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:text="@string/btnBill" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/txtInterval"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/txtInterval"
-        android:textAlignment="center"
-        android:textSize="24sp" />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/radMonth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="chooseInterval"
-            android:text="@string/radMonth" />
-
-        <RadioButton
-            android:id="@+id/radWeek"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="chooseInterval"
-            android:text="@string/radWeek" />
-
-    </RadioGroup>
 
 </LinearLayout>

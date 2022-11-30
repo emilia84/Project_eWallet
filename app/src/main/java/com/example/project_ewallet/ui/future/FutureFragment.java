@@ -45,7 +45,6 @@ import java.util.Map;
 
 public class FutureFragment extends Fragment {
 
-
         private FragmentFutureBinding binding;
         private PieChart pieChart;
 
@@ -57,7 +56,6 @@ public class FutureFragment extends Fragment {
 
         Double totalIncome = 0.0;
         Double totalExpense = 0.0;
-
 
         @Override
         public void onResume() {
@@ -74,7 +72,6 @@ public class FutureFragment extends Fragment {
         }
         public View onCreateView(@NonNull LayoutInflater inflater,
                                  ViewGroup container, Bundle savedInstanceState) {
-
 
             binding = FragmentFutureBinding.inflate(inflater, container, false);
 
@@ -122,12 +119,9 @@ public class FutureFragment extends Fragment {
             return root;
         }
 
-
-
     private void showPieChart(){
 
         ArrayList<PieEntry> pieEntries = new ArrayList<>();
-
 
         //initializing data
 
@@ -175,7 +169,7 @@ public class FutureFragment extends Fragment {
         //set word wrap
         pieChart.getLegend().setWordWrapEnabled(true);
 
-       pieChart.setNoDataText("No data exists!");
+        pieChart.setNoDataText("No data exists!");
 
         pieChart.setData(pieData);
         pieChart.setDrawEntryLabels(false);
@@ -210,10 +204,8 @@ public class FutureFragment extends Fragment {
             binding = null;
         }
 
-
-
     public void getData(View v) {
-
+        expenseArr.clear(); //use clear() -> do not get data duplicates
 
         Cursor c = dbManager.fetchExpense();
         if (c != null && c.moveToFirst()) {
@@ -235,7 +227,7 @@ public class FutureFragment extends Fragment {
             }
         }
 
-
+        incomeArr.clear();
         // move this to a RecyclerView
         Cursor cs = dbManager.fetchIncome();
         if (cs != null && cs.moveToFirst()) {
@@ -257,8 +249,8 @@ public class FutureFragment extends Fragment {
             }
         }
 
-
         //get total income and expense
+        //Balance is not recorded , View v is never used!!!
         for (String [] strArr : expenseArr) {
             totalExpense += Double.parseDouble(strArr[2]);
 
@@ -269,7 +261,5 @@ public class FutureFragment extends Fragment {
         }
         pieChart.notifyDataSetChanged();
         pieChart.invalidate();
-
     }
-
 }

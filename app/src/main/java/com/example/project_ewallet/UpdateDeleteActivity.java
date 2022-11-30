@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -19,6 +20,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
     private TextView reservation;
     private DBManager dbManager;
     private String id;
+    private EditText txtAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         TextView txtCategory = (TextView) findViewById(R.id.txtCategory);
         txtCategory.setText(category);
 
-        EditText txtAmount = (EditText) findViewById(R.id.txtUpdateAmount);
+        txtAmount = (EditText) findViewById(R.id.txtUpdateAmount);
         txtAmount.setText(String.valueOf(amount));
 
         Button but = (Button) findViewById(R.id.btnDate);
@@ -54,7 +56,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         dbManager.open();
     }
     Calendar c = Calendar.getInstance();
-    SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat fmtDate = DateFormat.getDateInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -69,20 +71,20 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         dbManager.close();
     }
 
+    //Cannot update data to database
     public void update(View v) {
-        EditText amount = (EditText) findViewById(R.id.txtUpdateAmount);
-        reservation = (TextView) findViewById(R.id.txtRes);
 
-        double amountVal = Double.parseDouble(amount.getText().toString());
+        double amountVal = Double.parseDouble(txtAmount.getText().toString());
         String date = reservation.getText().toString();
 
-        dbManager.updateIncome(Long.parseLong(id), amountVal, date);
         dbManager.updateExpense(Long.parseLong(id), amountVal, date);
+        dbManager.updateIncome(Long.parseLong(id), amountVal, date);
+
         finish();
     }
     public void delete(View v) {
-        dbManager.deleteIncome(Long.parseLong(id));
         dbManager.deleteExpense(Long.parseLong(id));
+        dbManager.deleteIncome(Long.parseLong(id));
         finish();
     }
 }
