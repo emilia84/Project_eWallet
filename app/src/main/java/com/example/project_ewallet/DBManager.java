@@ -73,7 +73,7 @@ public class DBManager {
     }
 
 
-    public int updateIncome(long id, String categories, double amount, String date) {
+    public int updateIncome(long id, double amount, String date) {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean("data_changed", true)
@@ -81,15 +81,15 @@ public class DBManager {
 
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
+        contentValue.put(DBHelper.DATE, date);
+//        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
-//        contentValue.put(DBHelper.CATEGORIES, categories);
 
         int i = database.update(DBHelper.INCOME_TABLE, contentValues, DBHelper.ID + " = " + id, null);
         return i;
     }
 
-    public int updateExpense(long id, String categories, double amount, String date) {
+    public int updateExpense(long id, double amount, String date) {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean("data_changed", true)
@@ -97,9 +97,9 @@ public class DBManager {
 
         ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
+        contentValue.put(DBHelper.DATE, date);
+//        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
-//        contentValue.put(DBHelper.CATEGORIES, categories);
 
         int i = database.update(DBHelper.EXPENSE_TABLE, contentValues, DBHelper.ID + " = " + id, null);
         return i;
@@ -107,6 +107,7 @@ public class DBManager {
 
     // ====================================================
     public void deleteIncome(long id) {
+        //Delete button is updated in detail list immediately
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean("data_changed", true)

@@ -27,11 +27,11 @@ public class SetUpRecurFragment extends Fragment{
     private FragmentSetuprecurBinding binding;
     private TextView reservation;
     private DBManager dbManager;
-
+    private RadioButton rMonth;
+    private RadioButton rWeek;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
 
         binding = FragmentSetuprecurBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -45,8 +45,13 @@ public class SetUpRecurFragment extends Fragment{
                 reservation.setText(fmtDate.format(c.getTime()));
             }
         });
+
+        rMonth = root.findViewById(R.id.radMonth);
+        rWeek = root.findViewById(R.id.radWeek);
+
         dbManager = new DBManager(getContext());
         dbManager.open();
+        chooseInterval(root);
 
         return root;
     }
@@ -60,23 +65,22 @@ public class SetUpRecurFragment extends Fragment{
             c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         }
     };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        dbManager.close();
+        binding = null;
+
+    }
+
     //Code Interval!!!!
     public void chooseInterval(View view){
-        View root = binding.getRoot();
-        final RadioButton rMonth = root.findViewById(R.id.radMonth);
-        final RadioButton rWeek = root.findViewById(R.id.radWeek);
         if(rMonth.isChecked()){
             //
         }
         else if(rWeek.isChecked()){
             //
         }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-        dbManager.close();
     }
 }
