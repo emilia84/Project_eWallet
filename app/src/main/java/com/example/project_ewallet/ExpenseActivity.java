@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ExpenseActivity extends AppCompatActivity {
 //    private TextView reservation;
     private DBManager dbManager;
-//    ArrayList<String[]> expenseArr = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
