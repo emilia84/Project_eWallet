@@ -58,7 +58,7 @@ public class SetUpRecurFragment extends Fragment{
         dbManager = new DBManager(getContext());
         dbManager.open();
         chooseInterval(root);
-//        addRecurExpense(root);
+
 
         return root;
     }
@@ -110,6 +110,7 @@ public class SetUpRecurFragment extends Fragment{
 
     public void addRecurExpense(View v) {
         String catVal = "";
+
         if(v != null){
             switch (v.getId()) {
                 case R.id.btnMiscel:
@@ -143,6 +144,7 @@ public class SetUpRecurFragment extends Fragment{
 //                throw new RuntimeException();
             }
         }
+
 
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertExpense(catVal, amountVal);

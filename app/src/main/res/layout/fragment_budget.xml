@@ -22,6 +22,15 @@
         android:text="TextView"
         android:textSize="20sp" />
 
+    <Button
+        android:id="@+id/btnOpenDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/set_budget"
+        tools:ignore="TextContrastCheck" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,15 +58,6 @@
             android:onClick="getData"
             android:text="@string/btnDetails"
             tools:ignore="TextContrastCheck" />
-
-        <TextView
-            android:id="@+id/txtBudget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:layout_weight="1"
-            android:text="TextView"
-            android:textSize="20sp" />
 
     </LinearLayout>
 

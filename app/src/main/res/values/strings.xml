@@ -43,5 +43,9 @@
 
     <string name="btnDetails">Details</string>
     <string name="txtAmount">Amount</string>
+    <string name="custom_dialog">Set your budget</string>
+    <string name="submit">Submit</string>
+    <string name="budget_data">Enter your budget</string>
+    <string name="set_budget">Set Budget</string>
 
 </resources>
