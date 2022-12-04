@@ -49,11 +49,14 @@ public class BudgetFragment extends Fragment {
     private DBManager dbManager;
     private Map<String, Double> typeAmountMap = new HashMap<>();
 
+    private TextView txtStatus;
+
     ArrayList<String[]> expenseArr = new ArrayList<>();
     ArrayList<String[]> incomeArr = new ArrayList<>();
 
     Double totalIncome = 0.0;
     Double totalExpense = 0.0;
+    Double result = 0.0;
 
     @Override
     public void onResume() {
@@ -65,7 +68,13 @@ public class BudgetFragment extends Fragment {
             prefs.edit().remove("data_changed").apply();
             getParentFragmentManager().beginTransaction().detach(this).commit();
             getParentFragmentManager().beginTransaction().attach(this).commit();
+            budget = PreferenceManager.getDefaultSharedPreferences(this.getContext()).getFloat("budget",0);
 
+            if(totalExpense > budget){
+                txtStatus.setText("You have exceeded your budget by "+ (totalExpense - budget));
+            } else{
+                txtStatus.setText("You have "+ (budget - totalExpense) +" left to spend.");
+            }
         }
     }
 
@@ -85,7 +94,7 @@ public class BudgetFragment extends Fragment {
             }
         });
         pieChart = (PieChart) root.findViewById(R.id.chart);
-        TextView txtStatus = (TextView) root.findViewById(R.id.txtStatus);
+        txtStatus = (TextView) root.findViewById(R.id.txtStatus);
 
         dbManager = new DBManager(this.getActivity());
         dbManager.open();
@@ -151,12 +160,19 @@ public class BudgetFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                PreferenceManager.getDefaultSharedPreferences(getContext()).edit().clear().apply();
                 budget = Float.parseFloat(txtSetBudget.getText().toString());
                 PreferenceManager.getDefaultSharedPreferences(getContext())
                         .edit()
                         .putFloat("budget", budget)
                         .apply();
                 Log.d("budget", String.valueOf(budget));
+                if(totalExpense > budget){
+                    txtStatus.setText("You have exceeded your budget by "+ (totalExpense - budget));
+                } else{
+                    txtStatus.setText("You have "+ (budget - totalExpense) +" left to spend.");
+                }
+
                 dialog.dismiss();
             }
         });
@@ -292,12 +308,12 @@ public class BudgetFragment extends Fragment {
 
         //get total income and expense
         //Balance is not recorded , View v is never used!!!
-        for (String [] strArr : expenseArr) {
-            totalExpense += Double.parseDouble(strArr[2]);
+        for (String [] strArr1 : expenseArr) {
+            totalExpense += Double.parseDouble(strArr1[2]);
 
         }
-        for (String [] strArr : incomeArr) {
-            totalIncome += Double.parseDouble(strArr[2]);
+        for (String [] strArr2 : incomeArr) {
+            totalIncome += Double.parseDouble(strArr2[2]);
 
         }
         pieChart.notifyDataSetChanged();
