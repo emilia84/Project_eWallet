@@ -206,7 +206,7 @@ public class FutureFragment extends Fragment {
         }
 
     public void getData(View v) {
-        expenseArr.clear(); //use clear() -> do not get data duplicates
+//        expenseArr.clear(); //use clear() -> do not get data duplicates
 
         Cursor c = dbManager.fetchExpense();
         if (c != null && c.moveToFirst()) {
@@ -228,7 +228,7 @@ public class FutureFragment extends Fragment {
             }
         }
 
-        incomeArr.clear();
+//        incomeArr.clear();
         // move this to a RecyclerView
         Cursor cs = dbManager.fetchIncome();
         if (cs != null && cs.moveToFirst()) {
