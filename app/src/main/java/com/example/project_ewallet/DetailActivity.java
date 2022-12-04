@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity{
 
+    private DBManager dbManager;
     ArrayList<String[]> expense = new ArrayList<>();
     ArrayList<String[]> income = new ArrayList<>();
     DBManager dbManager;
@@ -33,9 +34,6 @@ public class DetailActivity extends AppCompatActivity{
             recreate();
         }
     }
-
-
-    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

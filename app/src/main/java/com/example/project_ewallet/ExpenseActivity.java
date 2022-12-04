@@ -70,7 +70,7 @@ public class ExpenseActivity extends AppCompatActivity {
             default:throw new RuntimeException();
 
         }
-        EditText amount = (EditText) findViewById(R.id.txtUpdateAmount);
+        EditText amount = (EditText) findViewById(R.id.txtAmountRecur);
         double amountVal = Double.parseDouble(amount.getText().toString());
         dbManager.insertExpense(catVal, amountVal);
         finish();
