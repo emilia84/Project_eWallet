@@ -30,7 +30,7 @@
 
     <string name="txtInterval">Choose Interval</string>
     <string name="radMonth">Month Interval</string>
-    <string name="radWeek">Week Interval</string>
+    <string name="radWeek">Year Interval</string>
     <string name="btnDel">Delete</string>
     <string name="btnUpdate">Update</string>
     <string name="btnDate">Select the date</string>

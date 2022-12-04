@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project_ewallet.ui.future.FutureFragment;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,7 +58,8 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         dbManager.open();
     }
     Calendar c = Calendar.getInstance();
-    DateFormat fmtDate = DateFormat.getDateInstance();
+    SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+//    DateFormat fmtDate = DateFormat.getDateInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -85,6 +88,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
     public void delete(View v) {
         dbManager.deleteExpense(Long.parseLong(id));
         dbManager.deleteIncome(Long.parseLong(id));
+
         finish();
     }
 }

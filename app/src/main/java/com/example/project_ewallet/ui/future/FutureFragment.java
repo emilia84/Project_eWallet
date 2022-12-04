@@ -90,32 +90,33 @@ public class FutureFragment extends Fragment {
             btnDetails.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     Intent i = new Intent(view.getContext(), DetailActivity.class);
                     Bundle args = new Bundle();
                     args.putSerializable("expense",(Serializable)expenseArr);
                     args.putSerializable("income",(Serializable)incomeArr);
                     i.putExtra("bundle",args);
                     startActivity(i);
-
                 }
             });
+
             Button btnExp = (Button)root.findViewById(R.id.btnExpense);
             btnExp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(view.getContext(), ExpenseActivity.class));
+                    Intent i = new Intent(view.getContext(), ExpenseActivity.class);
+                    startActivity(i);
                 }
             });
+
             Button btnIn = (Button)root.findViewById(R.id.btnIncome);
             btnIn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(view.getContext(), IncomeActivity.class));
+                    Intent i = new Intent(view.getContext(), IncomeActivity.class);
+                    startActivity(i);
                 }
             });
-            dbManager = new DBManager(getContext());
-            dbManager.open();
+
             return root;
         }
 

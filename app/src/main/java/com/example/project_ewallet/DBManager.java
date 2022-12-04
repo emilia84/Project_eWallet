@@ -79,13 +79,14 @@ public class DBManager {
                 .putBoolean("data_changed", true)
                 .apply();
 
-        ContentValues contentValues = new ContentValues();
+//        ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, date);
 //        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
+//        contentValue.put(DBHelper.CATEGORIES, categories);
 
-        int i = database.update(DBHelper.INCOME_TABLE, contentValues, DBHelper.ID + " = " + id, null);
+        int i = database.update(DBHelper.INCOME_TABLE, contentValue, DBHelper.ID + " = " + id, null);
         return i;
     }
 
@@ -95,13 +96,14 @@ public class DBManager {
                 .putBoolean("data_changed", true)
                 .apply();
 
-        ContentValues contentValues = new ContentValues();
+//        ContentValues contentValues = new ContentValues();
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.DATE, date);
 //        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(date));
         contentValue.put(DBHelper.AMOUNT, amount);
+//        contentValue.put(DBHelper.CATEGORIES, categories);
 
-        int i = database.update(DBHelper.EXPENSE_TABLE, contentValues, DBHelper.ID + " = " + id, null);
+        int i = database.update(DBHelper.EXPENSE_TABLE, contentValue, DBHelper.ID + " = " + id, null);
         return i;
     }
 
