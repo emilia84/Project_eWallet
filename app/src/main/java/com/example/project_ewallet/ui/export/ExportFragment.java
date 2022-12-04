@@ -1,7 +1,10 @@
 package com.example.project_ewallet.ui.export;
 
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import com.example.project_ewallet.R;
 import com.example.project_ewallet.DBHelper;
@@ -25,6 +29,7 @@ import java.io.FileWriter;
 public class ExportFragment extends Fragment {
     private FragmentExportBinding binding;
     private DBManager dbManager;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +61,7 @@ public class ExportFragment extends Fragment {
 
     private void exportDBExpenses() {
 
-        DBHelper dbhelper = new DBHelper(this.getContext());
+
         File exportDir = new File(Environment.getExternalStorageDirectory(), "");
         if (!exportDir.exists())
         {
@@ -66,19 +71,22 @@ public class ExportFragment extends Fragment {
         File file = new File(exportDir, "expenses.csv");
         try
         {
+
             file.createNewFile();
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            SQLiteDatabase db = dbhelper.getReadableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM EXPENSES",null);
+
+            Cursor curCSV = dbManager.fetchExpense();
             csvWrite.writeNext(curCSV.getColumnNames());
             while(curCSV.moveToNext())
             {
                 //Which column you want to export
                 String[] arrStr ={String.valueOf(curCSV.getInt(0)),curCSV.getString(1), String.valueOf(curCSV.getDouble(2)),curCSV.getString(3)};
                 csvWrite.writeNext(arrStr);
+                Log.d("debug", String.valueOf(arrStr));
             }
             csvWrite.close();
             curCSV.close();
+
         }
         catch(Exception sqlEx)
         {
@@ -95,22 +103,24 @@ public class ExportFragment extends Fragment {
             exportDir.mkdirs();
         }
 
-        File file = new File(exportDir, "expenses.csv");
+        File file = new File(exportDir, "income.csv");
         try
         {
             file.createNewFile();
             CSVWriter csvWrite = new CSVWriter(new FileWriter(file));
-            SQLiteDatabase db = dbhelper.getReadableDatabase();
-            Cursor curCSV = db.rawQuery("SELECT * FROM INCOME",null);
+
+            Cursor curCSV = dbManager.fetchIncome();
             csvWrite.writeNext(curCSV.getColumnNames());
             while(curCSV.moveToNext())
             {
-                //Which column you want to export
+
                 String[] arrStr ={String.valueOf(curCSV.getInt(0)),curCSV.getString(1), String.valueOf(curCSV.getDouble(2)),curCSV.getString(3)};
                 csvWrite.writeNext(arrStr);
             }
             csvWrite.close();
             curCSV.close();
+
+
         }
         catch(Exception sqlEx)
         {

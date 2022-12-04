@@ -19,7 +19,7 @@ public class DetailActivity extends AppCompatActivity{
 
     ArrayList<String[]> expense = new ArrayList<>();
     ArrayList<String[]> income = new ArrayList<>();
-
+    DBManager dbManager;
     @Override
     protected void onResume() {
 

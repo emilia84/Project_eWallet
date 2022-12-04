@@ -68,7 +68,7 @@ public class SetUpRecurFragment extends Fragment{
         dbManager = new DBManager(getContext());
         dbManager.open();
         chooseInterval(root);
-//        addRecurExpense(root);
+
 
         return root;
     }
@@ -100,39 +100,39 @@ public class SetUpRecurFragment extends Fragment{
         }
     }
     public void addRecurExpense(View v) {
-//        String catVal = "";
-//        switch (v.getId()) {
-//            case R.id.btnMiscel:
-//                catVal = miscel.getText().toString();
-//                break;
-//            case R.id.btnBill:
-//                catVal = bill.getText().toString();
-//                break;
-//            case R.id.btnClot:
-//                catVal = clothes.getText().toString();
-//                break;
-//            case R.id.btnFood:
-//                catVal = food.getText().toString();
-//                break;
-//            case R.id.btnHealth:
-//                catVal = health.getText().toString();
-//                break;
-//            case R.id.btnHouse:
-//                catVal = house.getText().toString();
-//                break;
-//            case R.id.btnTrans:
-//                catVal = transport.getText().toString();
-//                break;
-//            case R.id.btnToilet:
-//                catVal = toilet.getText().toString();
-//                break;
-//            case R.id.btnEnt:
-//                catVal = entertain.getText().toString();
-//                break;
-//            default:
-//                throw new RuntimeException();
-//        }
-//        double amountVal = Double.parseDouble(amount.getText().toString());
-//        dbManager.insertExpense(catVal, amountVal);
+        String catVal = "";
+        switch (v.getId()) {
+            case R.id.btnMiscel:
+                catVal = miscel.getText().toString();
+                break;
+            case R.id.btnBill:
+                catVal = bill.getText().toString();
+                break;
+            case R.id.btnClot:
+                catVal = clothes.getText().toString();
+                break;
+            case R.id.btnFood:
+                catVal = food.getText().toString();
+                break;
+            case R.id.btnHealth:
+                catVal = health.getText().toString();
+                break;
+            case R.id.btnHouse:
+                catVal = house.getText().toString();
+                break;
+            case R.id.btnTrans:
+                catVal = transport.getText().toString();
+                break;
+            case R.id.btnToilet:
+                catVal = toilet.getText().toString();
+                break;
+            case R.id.btnEnt:
+                catVal = entertain.getText().toString();
+                break;
+            default:
+                throw new RuntimeException();
+        }
+        double amountVal = Double.parseDouble(amount.getText().toString());
+        dbManager.insertExpense(catVal, amountVal);
     }
 }
