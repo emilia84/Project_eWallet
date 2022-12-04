@@ -30,28 +30,22 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final String[] item = list.get(position);
         holder.txtDate.setText(item[1]);
-        holder.txtSal.setText(item[2]);
+        holder.txtAmount.setText(item[2]);
         holder.txtCat.setText(item[3]);
 
-        //Pass data to UpdateDelete Activity!!!!
-        holder.txtDate.setOnClickListener(new View.OnClickListener() {
+        //Pass data to UpdateDelete Activity
+        holder.txtCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), UpdateDeleteExpense.class);
+                Intent i = new Intent(view.getContext(), UpdateDeleteActivity.class);
+//                holder.getAdapterPosition();
                 i.putExtra("id", item[0]);
-                i.putExtra("date", R.id.txtDate);
-                i.putExtra("amount", R.id.txtAmount);
-                i.putExtra("category", R.id.txtCat);
-            }
-        });
-        holder.txtDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), UpdateDeleteIncome.class);
-                i.putExtra("id", item[0]);
-                i.putExtra("date", R.id.txtDate);
-                i.putExtra("amount", R.id.txtAmount);
-                i.putExtra("category", R.id.txtCat);
+                i.putExtra("date", holder.txtDate.getText().toString());
+                i.putExtra("amount",Double.parseDouble(holder.txtAmount.getText().toString()) );
+                i.putExtra("category", holder.txtCat.getText().toString()  );
+                if(i != null){
+                    view.getContext().startActivity(i);
+                }
             }
         });
     }
@@ -62,12 +56,12 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtCat;
-        public TextView txtSal;
+        public TextView txtAmount;
         public TextView txtDate;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.txtCat = (TextView) itemView.findViewById(R.id.txtCat);
-            this.txtSal = (TextView) itemView.findViewById(R.id.txtAmount);
+            this.txtAmount = (TextView) itemView.findViewById(R.id.txtAmount);
             this.txtDate = (TextView) itemView.findViewById(R.id.txtDate);
         }
     }

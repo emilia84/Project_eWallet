@@ -9,8 +9,10 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#4EB5A3"
         android:text="Expense Detail"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -24,8 +26,10 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#4EB5A3"
         android:text="Income Detail"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView

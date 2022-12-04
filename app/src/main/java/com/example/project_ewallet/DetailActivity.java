@@ -3,7 +3,11 @@ package com.example.project_ewallet;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import android.preference.PreferenceManager;
+
+import android.util.Log;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +34,9 @@ public class DetailActivity extends AppCompatActivity{
         }
     }
 
+
+    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,6 @@ public class DetailActivity extends AppCompatActivity{
 
          expense = (ArrayList<String[]>) b.getSerializable("expense");
          income = (ArrayList<String[]>) b.getSerializable("income");
-
 
         RecyclerView recyclerViewExpense = (RecyclerView) findViewById(R.id.rViewExpense);
         DetailAdapter adapterExpense = new DetailAdapter(expense);
@@ -52,5 +58,14 @@ public class DetailActivity extends AppCompatActivity{
         recyclerViewIncome.setHasFixedSize(true);
         recyclerViewIncome.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewIncome.setAdapter(adapterIncome);
+
+        dbManager = new DBManager(this);
+        dbManager.open();
+    }
+    protected void onDestroy() {
+
+        super.onDestroy();
+        Log.d("Application","onDestroy");
+        dbManager.close();
     }
 }

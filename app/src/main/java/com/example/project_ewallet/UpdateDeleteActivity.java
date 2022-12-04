@@ -12,18 +12,22 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project_ewallet.ui.future.FutureFragment;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class UpdateDeleteExpense extends AppCompatActivity {
+public class UpdateDeleteActivity extends AppCompatActivity {
     private TextView reservation;
     private DBManager dbManager;
     private String id;
+    private EditText txtAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.update_delete_expense);
+        setContentView(R.layout.update_delete_activity);
 
         Intent i = getIntent();
         String date = i.getStringExtra("date");
@@ -37,14 +41,14 @@ public class UpdateDeleteExpense extends AppCompatActivity {
         TextView txtCategory = (TextView) findViewById(R.id.txtCategory);
         txtCategory.setText(category);
 
-        EditText txtAmount = (EditText) findViewById(R.id.txtAmountExpense);
+        txtAmount = (EditText) findViewById(R.id.txtUpdateAmount);
         txtAmount.setText(String.valueOf(amount));
 
         Button but = (Button) findViewById(R.id.btnDate);
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(UpdateDeleteExpense.this,d,c.get(Calendar.YEAR),
+                new DatePickerDialog(UpdateDeleteActivity.this,d,c.get(Calendar.YEAR),
                         c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
                 reservation.setText(fmtDate.format(c.getTime()));
             }
@@ -55,6 +59,7 @@ public class UpdateDeleteExpense extends AppCompatActivity {
     }
     Calendar c = Calendar.getInstance();
     SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
+//    DateFormat fmtDate = DateFormat.getDateInstance();
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -64,24 +69,26 @@ public class UpdateDeleteExpense extends AppCompatActivity {
         }
     };
     protected void onDestroy() {
-
         super.onDestroy();
         Log.d("Application","onDestroy");
         dbManager.close();
     }
 
-    public void updateExpense(View v) {
-        Button update = (Button)findViewById(R.id.btnUpdate);
-        EditText amount = (EditText)findViewById(R.id.txtAmountExpense);
-        reservation = (TextView) findViewById(R.id.txtRes);
+    //Cannot update data to database
+    public void update(View v) {
 
-        String catVal = update.getText().toString();
-        double amountVal = Double.parseDouble(amount.getText().toString());
+        double amountVal = Double.parseDouble(txtAmount.getText().toString());
         String date = reservation.getText().toString();
 
-//        dbManager.updateExpense(id,catVal,amountVal,date);
+        dbManager.updateExpense(Long.parseLong(id), amountVal, date);
+        dbManager.updateIncome(Long.parseLong(id), amountVal, date);
+
+        finish();
     }
-    public void deleteExpense(View v) {
-//        dbManager.deleteExpense(id);
+    public void delete(View v) {
+        dbManager.deleteExpense(Long.parseLong(id));
+        dbManager.deleteIncome(Long.parseLong(id));
+
+        finish();
     }
 }

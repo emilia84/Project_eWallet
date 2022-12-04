@@ -26,14 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private DBManager dbManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
-//        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
-//        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
