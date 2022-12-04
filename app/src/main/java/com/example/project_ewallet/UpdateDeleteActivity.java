@@ -12,9 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project_ewallet.ui.future.FutureFragment;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -41,7 +38,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         TextView txtCategory = (TextView) findViewById(R.id.txtCategory);
         txtCategory.setText(category);
 
-        txtAmount = (EditText) findViewById(R.id.txtUpdateAmount);
+        txtAmount = (EditText) findViewById(R.id.txtAmountRecur);
         txtAmount.setText(String.valueOf(amount));
 
         Button but = (Button) findViewById(R.id.btnDate);
