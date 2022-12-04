@@ -40,6 +40,24 @@ public class SetUpRecurFragment extends Fragment{
 
         dbManager = new DBManager(this.getActivity());
         dbManager.open();
+        amount = (EditText) root.findViewById(R.id.txtAmountRecur);
+        //set onClick Listener for every button, pass in the button in addRecurExpense. Add a toast to notify set up sucessfully. Delete select day
+        miscel = (Button) root.findViewById(R.id.btnMiscel);
+        miscel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(miscel);
+            }
+        });
+        bill = (Button) root.findViewById(R.id.btnBill);
+        clothes = (Button) root.findViewById(R.id.btnClot);
+        food = (Button) root.findViewById(R.id.btnFood);
+        health = (Button) root.findViewById(R.id.btnHealth);
+        house = (Button) root.findViewById(R.id.btnHouse);
+        transport = (Button) root.findViewById(R.id.btnTrans);
+        toilet = (Button) root.findViewById(R.id.btnToilet);
+        entertain = (Button) root.findViewById(R.id.btnEnt);
+        amount = (EditText) root.findViewById(R.id.txtAmountRecur);
 
         reservation = (TextView) root.findViewById(R.id.txtRes);
         Button but = (Button) root.findViewById(R.id.btnDate);
@@ -62,6 +80,7 @@ public class SetUpRecurFragment extends Fragment{
 
         return root;
     }
+    // No need for this, insert from today date
     Calendar c = Calendar.getInstance();
     SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
     DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
@@ -73,23 +92,7 @@ public class SetUpRecurFragment extends Fragment{
         }
     };
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        // save views as variables in this method
-        // "view" is the one returned from onCreateView
-        amount = (EditText) view.findViewById(R.id.txtAmountRecur);
-        miscel = (Button) view.findViewById(R.id.btnMiscel);
-        bill = (Button) view.findViewById(R.id.btnBill);
-        clothes = (Button) view.findViewById(R.id.btnClot);
-        food = (Button) view.findViewById(R.id.btnFood);
-        health = (Button) view.findViewById(R.id.btnHealth);
-        house = (Button) view.findViewById(R.id.btnHouse);
-        transport = (Button) view.findViewById(R.id.btnTrans);
-        toilet = (Button) view.findViewById(R.id.btnToilet);
-        entertain = (Button) view.findViewById(R.id.btnEnt);
-        amount = (EditText) view.findViewById(R.id.txtAmountRecur);
 
-    }
 
     @Override
     public void onDestroyView() {
@@ -99,6 +102,7 @@ public class SetUpRecurFragment extends Fragment{
     }
 
     //Code Interval!!!!
+    //delete this one
     public void chooseInterval(View view){
         if(rMonth.isChecked()){
 
@@ -147,6 +151,9 @@ public class SetUpRecurFragment extends Fragment{
 
 
         double amountVal = Double.parseDouble(amount.getText().toString());
+        // check for interval here and then insert using for loop
+
         dbManager.insertExpense(catVal, amountVal);
+
     }
 }
