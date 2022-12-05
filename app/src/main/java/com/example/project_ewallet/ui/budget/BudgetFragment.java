@@ -130,14 +130,14 @@ public class BudgetFragment extends Fragment {
             }
         });
 
-        Button btnIn = (Button)root.findViewById(R.id.btnIncome);
-        btnIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(view.getContext(), IncomeActivity.class);
-                startActivity(i);
-            }
-        });
+//        Button btnIn = (Button)root.findViewById(R.id.btnIncome);
+//        btnIn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent i = new Intent(view.getContext(), IncomeActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
         return root;
     }
@@ -307,15 +307,14 @@ public class BudgetFragment extends Fragment {
         }
 
         //get total income and expense
-        //Balance is not recorded , View v is never used!!!
         for (String [] strArr1 : expenseArr) {
             totalExpense += Double.parseDouble(strArr1[2]);
 
         }
-        for (String [] strArr2 : incomeArr) {
-            totalIncome += Double.parseDouble(strArr2[2]);
-
-        }
+//        for (String [] strArr2 : incomeArr) {
+//            totalIncome += Double.parseDouble(strArr2[2]);
+//
+//        }
         pieChart.notifyDataSetChanged();
         pieChart.invalidate();
     }
