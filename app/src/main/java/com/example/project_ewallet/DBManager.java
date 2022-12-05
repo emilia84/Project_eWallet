@@ -1,6 +1,7 @@
 package com.example.project_ewallet;
 
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -34,25 +35,26 @@ public class DBManager {
     }
     // ================================================
 
-    public void insertIncome( String categories, double amount) {
+    public void insertIncome( String categories, double amount, String date) {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean("data_changed", true)
                 .apply();
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        contentValue.put(DBHelper.DATE, date);
         contentValue.put(DBHelper.AMOUNT, amount);
         contentValue.put(DBHelper.CATEGORIES, categories);
 
         database.insert(DBHelper.INCOME_TABLE, null, contentValue);
     }
-    public void insertExpense( String categories, double amount) {
+    @SuppressLint("NewApi")
+    public void insertExpense(String categories, double amount, String date) {
         PreferenceManager.getDefaultSharedPreferences(context)
                 .edit()
                 .putBoolean("data_changed", true)
                 .apply();
         ContentValues contentValue = new ContentValues();
-        contentValue.put(DBHelper.DATE, new SimpleDateFormat("yyyy-MM-dd").format(new Date()));
+        contentValue.put(DBHelper.DATE, date);
         contentValue.put(DBHelper.AMOUNT, amount);
         contentValue.put(DBHelper.CATEGORIES, categories);
 
