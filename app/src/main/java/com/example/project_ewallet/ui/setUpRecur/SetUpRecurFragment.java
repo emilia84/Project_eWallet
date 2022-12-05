@@ -26,7 +26,6 @@ import java.util.Calendar;
 public class SetUpRecurFragment extends Fragment{
 
     private FragmentSetuprecurBinding binding;
-    private TextView reservation;
     private DBManager dbManager;
     private RadioButton rMonth, rWeek;
     private Button miscel, bill, clothes, food, health, house, transport, toilet, entertain;
@@ -41,7 +40,8 @@ public class SetUpRecurFragment extends Fragment{
         dbManager = new DBManager(this.getActivity());
         dbManager.open();
         amount = (EditText) root.findViewById(R.id.txtAmountRecur);
-        //set onClick Listener for every button, pass in the button in addRecurExpense. Add a toast to notify set up sucessfully. Delete select day
+
+        //set onClick Listener for every button, pass in the button in addRecurExpense.
         miscel = (Button) root.findViewById(R.id.btnMiscel);
         miscel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,24 +49,76 @@ public class SetUpRecurFragment extends Fragment{
                 addRecurExpense(miscel);
             }
         });
-        bill = (Button) root.findViewById(R.id.btnBill);
-        clothes = (Button) root.findViewById(R.id.btnClot);
-        food = (Button) root.findViewById(R.id.btnFood);
-        health = (Button) root.findViewById(R.id.btnHealth);
-        house = (Button) root.findViewById(R.id.btnHouse);
-        transport = (Button) root.findViewById(R.id.btnTrans);
-        toilet = (Button) root.findViewById(R.id.btnToilet);
-        entertain = (Button) root.findViewById(R.id.btnEnt);
-        amount = (EditText) root.findViewById(R.id.txtAmountRecur);
 
-        reservation = (TextView) root.findViewById(R.id.txtRes);
-        Button but = (Button) root.findViewById(R.id.btnDate);
-        but.setOnClickListener(new View.OnClickListener() {
+        bill = (Button) root.findViewById(R.id.btnBill);
+        bill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(view.getContext(),d,c.get(Calendar.YEAR),
-                        c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH)).show();
-                reservation.setText(fmtDate.format(c.getTime()));
+                addRecurExpense(bill);
+            }
+        });
+
+        clothes = (Button) root.findViewById(R.id.btnClot);
+        clothes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(clothes);
+            }
+        });
+
+        food = (Button) root.findViewById(R.id.btnFood);
+        food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(food);
+            }
+        });
+
+        health = (Button) root.findViewById(R.id.btnHealth);
+        health.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(health);
+            }
+        });
+
+        house = (Button) root.findViewById(R.id.btnHouse);
+        house.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(house);
+            }
+        });
+
+        transport = (Button) root.findViewById(R.id.btnTrans);
+        transport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(transport);
+            }
+        });
+
+        toilet = (Button) root.findViewById(R.id.btnToilet);
+        toilet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(toilet);
+            }
+        });
+
+        entertain = (Button) root.findViewById(R.id.btnEnt);
+        entertain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(entertain);
+            }
+        });
+
+        amount = (EditText) root.findViewById(R.id.txtAmountRecur);
+        amount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addRecurExpense(amount);
             }
         });
 
@@ -75,24 +127,12 @@ public class SetUpRecurFragment extends Fragment{
 
         dbManager = new DBManager(getContext());
         dbManager.open();
-        chooseInterval(root);
-
 
         return root;
     }
-    // No need for this, insert from today date
     Calendar c = Calendar.getInstance();
-    SimpleDateFormat fmtDate = new SimpleDateFormat("yyyy-MM-dd");
-    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            c.set(Calendar.YEAR, year);
-            c.set(Calendar.MONTH, monthOfYear);
-            c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        }
-    };
-
-
+    int month = c.get(Calendar.MONTH);
+    int week = c.get(Calendar.WEEK_OF_YEAR);
 
     @Override
     public void onDestroyView() {
@@ -101,20 +141,8 @@ public class SetUpRecurFragment extends Fragment{
         binding = null;
     }
 
-    //Code Interval!!!!
-    //delete this one
-    public void chooseInterval(View view){
-        if(rMonth.isChecked()){
-
-        }
-        else if(rWeek.isChecked()){
-
-        }
-    }
-
     public void addRecurExpense(View v) {
         String catVal = "";
-
         if(v != null){
             switch (v.getId()) {
                 case R.id.btnMiscel:
@@ -149,11 +177,26 @@ public class SetUpRecurFragment extends Fragment{
             }
         }
 
-
         double amountVal = Double.parseDouble(amount.getText().toString());
-        // check for interval here and then insert using for loop
 
-        dbManager.insertExpense(catVal, amountVal);
+        if(rMonth.isChecked()){
+            for( int j=0; j<= 11; j++){
+                dbManager.insertExpense(catVal, amountVal);
+                //set up loop each month
+                for(int currentMonth = month; currentMonth < 12; currentMonth++){
+                    c.set(Calendar.MONTH, currentMonth);
+                }
+            }
+        }
 
+        else if(rWeek.isChecked()){
+            for( int j=0; j<= 51; j++) {
+                dbManager.insertExpense(catVal, amountVal);
+                //set up loop each week
+                for(int currentWeek = week; currentWeek < 52; currentWeek++){
+                    c.set(Calendar.WEEK_OF_YEAR, currentWeek);
+                }
+            }
+        }
     }
 }
