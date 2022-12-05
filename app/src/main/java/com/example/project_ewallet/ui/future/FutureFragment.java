@@ -56,6 +56,7 @@ public class FutureFragment extends Fragment {
 
         Double totalIncome = 0.0;
         Double totalExpense = 0.0;
+        Double balance = 0.0;
 
         @Override
         public void onResume() {
@@ -81,9 +82,10 @@ public class FutureFragment extends Fragment {
 
             dbManager = new DBManager(this.getActivity());
             dbManager.open();
+
             initPieChart();
             getData(root);
-            txtStatus.setText("Balance: " + (totalIncome-totalExpense));
+            txtStatus.setText("Balance: " + balance);
             showPieChart();
 
             Button btnDetails = (Button)root.findViewById(R.id.btnDetails);
@@ -206,7 +208,10 @@ public class FutureFragment extends Fragment {
         }
 
     public void getData(View v) {
-        expenseArr.clear(); //use clear() -> do not get data duplicates
+
+        expenseArr.clear();
+        totalExpense = 0.0;
+        totalIncome = 0.0;
 
         Cursor c = dbManager.fetchExpense();
         if (c != null && c.moveToFirst()) {
@@ -259,6 +264,7 @@ public class FutureFragment extends Fragment {
             totalIncome += Double.parseDouble(strArr[2]);
 
         }
+        balance = totalIncome - totalExpense;
         pieChart.notifyDataSetChanged();
         pieChart.invalidate();
     }
