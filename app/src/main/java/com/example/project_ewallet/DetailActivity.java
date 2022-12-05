@@ -48,13 +48,13 @@ public class DetailActivity extends AppCompatActivity{
         RecyclerView recyclerViewExpense = (RecyclerView) findViewById(R.id.rViewExpense);
         DetailAdapter adapterExpense = new DetailAdapter(expense);
         recyclerViewExpense.setHasFixedSize(true);
-        recyclerViewExpense.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewExpense.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerViewExpense.setAdapter(adapterExpense);
 
         RecyclerView recyclerViewIncome = (RecyclerView) findViewById(R.id.rViewIncome);
         DetailAdapter adapterIncome = new DetailAdapter(income);
         recyclerViewIncome.setHasFixedSize(true);
-        recyclerViewIncome.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewIncome.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerViewIncome.setAdapter(adapterIncome);
 
         dbManager = new DBManager(this);
