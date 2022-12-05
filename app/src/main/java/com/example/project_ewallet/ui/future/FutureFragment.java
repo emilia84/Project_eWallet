@@ -208,6 +208,7 @@ public class FutureFragment extends Fragment {
         }
 
     public void getData(View v) {
+
         expenseArr.clear();
         totalExpense = 0.0;
         totalIncome = 0.0;
@@ -255,7 +256,6 @@ public class FutureFragment extends Fragment {
         }
 
         //get total income and expense
-        //Balance is not recorded , View v is never used!!!
         for (String [] strArr : expenseArr) {
             totalExpense += Double.parseDouble(strArr[2]);
 

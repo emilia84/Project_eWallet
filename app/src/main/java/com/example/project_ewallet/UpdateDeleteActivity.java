@@ -76,7 +76,7 @@ public class UpdateDeleteActivity extends AppCompatActivity {
         dbManager.close();
     }
 
-    //Cannot update data to database
+
     public void update(View v) {
 
         double amountVal = Double.parseDouble(txtAmount.getText().toString());
