@@ -1,12 +1,17 @@
 package com.example.project_ewallet;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.time.LocalDate;
 
 public class ExpenseActivity extends AppCompatActivity {
 //    private TextView reservation;
@@ -28,6 +33,8 @@ public class ExpenseActivity extends AppCompatActivity {
         dbManager.close();
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void addExpense(View v) {
         String catVal="";
         switch(v.getId()){
@@ -72,7 +79,7 @@ public class ExpenseActivity extends AppCompatActivity {
         }
         EditText amount = (EditText) findViewById(R.id.txtAmountRecur);
         double amountVal = Double.parseDouble(amount.getText().toString());
-        dbManager.insertExpense(catVal, amountVal);
+        dbManager.insertExpense(catVal, amountVal, String.valueOf(LocalDate.now()));
         finish();
     }
 }

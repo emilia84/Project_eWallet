@@ -1,5 +1,6 @@
 package com.example.project_ewallet;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -7,7 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.time.LocalDate;
 
 public class IncomeActivity extends AppCompatActivity {
     private TextView reservation;
@@ -28,6 +32,7 @@ public class IncomeActivity extends AppCompatActivity {
         dbManager.close();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void addIncome(View v) {
         String catVal = "";
         Log.d("debug point", String.valueOf(v.getId()));
@@ -49,7 +54,7 @@ public class IncomeActivity extends AppCompatActivity {
         }
         EditText amount = (EditText) findViewById(R.id.txtAmountIncome);
         double amountVal = Double.parseDouble(amount.getText().toString());
-        dbManager.insertIncome(catVal, amountVal);
+        dbManager.insertIncome(catVal, amountVal, String.valueOf(LocalDate.now()));
 
         finish();
     }
