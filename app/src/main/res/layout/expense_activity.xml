@@ -7,6 +7,8 @@
     android:background="#EBFBFA"
     android:orientation="vertical">
 
+
+
     <EditText
         android:id="@+id/txtAmountRecur"
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Please enter your money"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
         android:textSize="24sp" />
