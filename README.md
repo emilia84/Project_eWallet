@@ -15,4 +15,4 @@ Project Management
     Estimated time spent: approx. 40 hours team work and meeting.
     Project allocation: Emilia is responsible for most of layout design and report. Dung Do is responsible for most of backbone idea and project debugging. We also do program testing together to adjust coding language, update the progress and seek effective solution to improve the project properly.
  
-Deliverable features and describe the functionality per feature:  https://bit.ly/3jvQeIB 
+Deliverable features and describe the functionality per feature:  https://tinyurl.com/3vzpxz8f
